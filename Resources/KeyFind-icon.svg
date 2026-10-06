@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="background" x1="90" y1="80" x2="930" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4B86F2"/>
+      <stop offset="1" stop-color="#2E63D1"/>
+    </linearGradient>
+    <linearGradient id="keycap" x1="238" y1="280" x2="535" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E7EEFF"/>
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="960" height="960" rx="236" fill="url(#background)"/>
+  <circle cx="512" cy="512" r="330" fill="#2455BF" opacity=".52"/>
+  <rect x="218" y="286" width="546" height="414" rx="86" fill="url(#keycap)" transform="rotate(-8 491 493)"/>
+  <rect x="308" y="376" width="112" height="84" rx="22" fill="#CADBFF" transform="rotate(-8 364 418)"/>
+  <rect x="437" y="358" width="112" height="84" rx="22" fill="#CADBFF" transform="rotate(-8 493 400)"/>
+  <rect x="308" y="482" width="241" height="84" rx="22" fill="#CADBFF" transform="rotate(-8 428 524)"/>
+  <circle cx="654" cy="648" r="142" fill="#1D3475" stroke="#FFFFFF" stroke-width="26"/>
+  <circle cx="654" cy="648" r="69" fill="none" stroke="#6EA1FF" stroke-width="20"/>
+  <path d="m755 749 93 93" fill="none" stroke="#1D3475" stroke-width="44" stroke-linecap="round"/>
+</svg>

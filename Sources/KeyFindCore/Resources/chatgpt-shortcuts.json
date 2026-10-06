@@ -1,0 +1,15 @@
+[
+  {
+    "id": "chatgpt-open",
+    "title": "打开 ChatGPT",
+    "description": "唤起 ChatGPT macOS 应用的输入窗口，快速开始提问。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌥"], "key": "Space", "symbolText": "⌥ Space", "readableText": "⌥ Option + Space" },
+    "searchTerms": ["打开ChatGPT", "唤起ChatGPT", "聊天窗口", "AI助手", "快速提问"],
+    "scope": "app",
+    "appIdentifier": "com.openai.chat",
+    "sourceURL": "https://help.openai.com/en/articles/9982051-using-the-chatgpt-mac-app",
+    "caution": "需要安装 ChatGPT macOS 应用；如果快捷键与其他工具冲突，可在 ChatGPT 设置中修改。",
+    "steps": ["按 ⌥Space", "在 ChatGPT 输入窗口中输入问题", "按回车发送"]
+  }
+]

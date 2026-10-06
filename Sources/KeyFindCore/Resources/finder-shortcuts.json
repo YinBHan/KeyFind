@@ -1,0 +1,1124 @@
+[
+  {
+    "id": "finder-finder-new-window",
+    "title": "打开新的访达窗口",
+    "description": "在访达中打开一个新的窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "N",
+      "symbolText": "⌘ N",
+      "readableText": "⌘ Command + N"
+    },
+    "searchTerms": [
+      "新建访达窗口",
+      "Finder新窗口"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-finder-info",
+    "title": "显示项目简介",
+    "description": "查看选中文件或文件夹的详细信息。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "I",
+      "symbolText": "⌘ I",
+      "readableText": "⌘ Command + I"
+    },
+    "searchTerms": [
+      "文件信息",
+      "文件属性",
+      "项目简介",
+      "查看属性",
+      "显示简介"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-finder-move-here",
+    "title": "将项目移动到此处",
+    "description": "将剪贴板中的文件从原始位置移动到当前位置。先在原位置按 Command-C，再在目标文件夹按 Option-Command-V。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "V",
+      "symbolText": "⌥ ⌘ V",
+      "readableText": "⌥ Option + ⌘ Command + V"
+    },
+    "searchTerms": [
+      "移动文件",
+      "把文件移到文件夹",
+      "文件移到文件夹",
+      "移动到此处",
+      "剪切文件",
+      "移动项目",
+      "Finder移动"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": "Finder 中用于移动文件，不是 Command-V 复制",
+    "steps": [
+      "选中文件",
+      "按 ⌘C",
+      "打开目标文件夹",
+      "按 ⌥⌘V"
+    ]
+  },
+  {
+    "id": "finder-finder-trash",
+    "title": "删除文件",
+    "description": "将选中的文件移到废纸篓。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "Delete",
+      "symbolText": "⌘ Delete",
+      "readableText": "⌘ Command + Delete"
+    },
+    "searchTerms": [
+      "删除文件",
+      "移到废纸篓",
+      "删除"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": "文件会被移到废纸篓"
+  },
+  {
+    "id": "finder-apple-76",
+    "title": "复制所选文件",
+    "description": "在访达中复制所选文件。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "D",
+      "symbolText": "⌘ D",
+      "readableText": "⌘ D"
+    },
+    "searchTerms": [
+      "复制所选文件",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-77",
+    "title": "推出所选磁盘或宗卷",
+    "description": "推出所选磁盘或宗卷。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "E",
+      "symbolText": "⌘ E",
+      "readableText": "⌘ E"
+    },
+    "searchTerms": [
+      "推出所选磁盘或宗卷",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-80",
+    "title": "(1) 如果在“访达”中选择了某个替身：显示所选替身对应的原始文件",
+    "description": "在访达中显示替身对应的原始文件。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "R",
+      "symbolText": "⌘ R",
+      "readableText": "⌘ R"
+    },
+    "searchTerms": [
+      "(1) 如果在“访达”中选择了某个替身：显示所选替身对应的原始文件",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-81",
+    "title": "打开“电脑”窗口",
+    "description": "打开“电脑”窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "C",
+      "symbolText": "⇧ ⌘ C",
+      "readableText": "⇧ ⌘ C"
+    },
+    "searchTerms": [
+      "打开“电脑”窗口",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-82",
+    "title": "打开“桌面”文件夹",
+    "description": "打开桌面文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "D",
+      "symbolText": "⇧ ⌘ D",
+      "readableText": "⇧ ⌘ D"
+    },
+    "searchTerms": [
+      "打开“桌面”文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-83",
+    "title": "打开“最近使用”窗口，其中会显示你最近查看或更改过的所有文件",
+    "description": "打开最近使用的文件列表。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "F",
+      "symbolText": "⇧ ⌘ F",
+      "readableText": "⇧ ⌘ F"
+    },
+    "searchTerms": [
+      "打开“最近使用”窗口，其中会显示你最近查看或更改过的所有文件",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-84",
+    "title": "打开“前往文件夹”窗口",
+    "description": "打开“前往文件夹”窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "G",
+      "symbolText": "⇧ ⌘ G",
+      "readableText": "⇧ ⌘ G"
+    },
+    "searchTerms": [
+      "打开“前往文件夹”窗口",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-85",
+    "title": "打开当前 macOS 用户账户的个人文件夹",
+    "description": "打开当前用户的个人文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "H",
+      "symbolText": "⇧ ⌘ H",
+      "readableText": "⇧ ⌘ H"
+    },
+    "searchTerms": [
+      "打开当前 macOS 用户账户的个人文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-86",
+    "title": "打开 iCloud 云盘",
+    "description": "打开 iCloud 云盘。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "I",
+      "symbolText": "⇧ ⌘ I",
+      "readableText": "⇧ ⌘ I"
+    },
+    "searchTerms": [
+      "打开 iCloud 云盘",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-87",
+    "title": "打开“网络”窗口",
+    "description": "打开网络位置窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "K",
+      "symbolText": "⇧ ⌘ K",
+      "readableText": "⇧ ⌘ K"
+    },
+    "searchTerms": [
+      "打开“网络”窗口",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-88",
+    "title": "打开“下载”文件夹",
+    "description": "打开下载文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "L",
+      "symbolText": "⌥ ⌘ L",
+      "readableText": "⌥ ⌘ L"
+    },
+    "searchTerms": [
+      "打开“下载”文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-89",
+    "title": "新建文件夹",
+    "description": "在访达当前位置新建文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "N",
+      "symbolText": "⇧ ⌘ N",
+      "readableText": "⇧ ⌘ N"
+    },
+    "searchTerms": [
+      "新建文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "打开目标位置",
+      "按 ⇧⌘N",
+      "输入文件夹名称并按回车"
+    ]
+  },
+  {
+    "id": "finder-apple-90",
+    "title": "打开“文稿”文件夹",
+    "description": "打开文稿文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "O",
+      "symbolText": "⇧ ⌘ O",
+      "readableText": "⇧ ⌘ O"
+    },
+    "searchTerms": [
+      "打开“文稿”文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-91",
+    "title": "在“访达”窗口中显示或隐藏预览面板",
+    "description": "显示或隐藏访达预览面板。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "P",
+      "symbolText": "⇧ ⌘ P",
+      "readableText": "⇧ ⌘ P"
+    },
+    "searchTerms": [
+      "在“访达”窗口中显示或隐藏预览面板",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-92",
+    "title": "打开“隔空投送”窗口",
+    "description": "打开隔空投送窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "R",
+      "symbolText": "⇧ ⌘ R",
+      "readableText": "⇧ ⌘ R"
+    },
+    "searchTerms": [
+      "打开“隔空投送”窗口",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-93",
+    "title": "显示或隐藏“访达”窗口中的标签页栏",
+    "description": "显示或隐藏访达标签页栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "T",
+      "symbolText": "⇧ ⌘ T",
+      "readableText": "⇧ ⌘ T"
+    },
+    "searchTerms": [
+      "显示或隐藏“访达”窗口中的标签页栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-94",
+    "title": "将所选的“访达”项目添加到程序坞（OS X Mavericks 或更高版本）",
+    "description": "将所选项目添加到程序坞。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌃",
+        "⇧",
+        "⌘"
+      ],
+      "key": "T",
+      "symbolText": "⌃ ⇧ ⌘ T",
+      "readableText": "⌃ ⇧ ⌘ T"
+    },
+    "searchTerms": [
+      "将所选的“访达”项目添加到程序坞（OS X Mavericks 或更高版本）",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "在访达中选中项目",
+      "按 ⌃⇧⌘T",
+      "项目添加到程序坞"
+    ]
+  },
+  {
+    "id": "finder-apple-96",
+    "title": "打开“实用工具”文件夹",
+    "description": "打开实用工具文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "U",
+      "symbolText": "⇧ ⌘ U",
+      "readableText": "⇧ ⌘ U"
+    },
+    "searchTerms": [
+      "打开“实用工具”文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-98",
+    "title": "将所选项目添加到边栏（OS X Mavericks 或更高版本）",
+    "description": "将所选项目添加到访达边栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌃",
+        "⌘"
+      ],
+      "key": "T",
+      "symbolText": "⌃ ⌘ T",
+      "readableText": "⌃ ⌘ T"
+    },
+    "searchTerms": [
+      "将所选项目添加到边栏（OS X Mavericks 或更高版本）",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "在访达中选中项目",
+      "按 ⌃⌘T",
+      "项目添加到边栏"
+    ]
+  },
+  {
+    "id": "finder-apple-99",
+    "title": "隐藏或显示“访达”窗口中的路径栏",
+    "description": "显示或隐藏访达路径栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "P",
+      "symbolText": "⌥ ⌘ P",
+      "readableText": "⌥ ⌘ P"
+    },
+    "searchTerms": [
+      "隐藏或显示“访达”窗口中的路径栏",
+      "显示访达路径栏",
+      "隐藏访达路径栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-100",
+    "title": "隐藏或显示“访达”窗口中的边栏",
+    "description": "显示或隐藏访达边栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "S",
+      "symbolText": "⌥ ⌘ S",
+      "readableText": "⌥ ⌘ S"
+    },
+    "searchTerms": [
+      "隐藏或显示“访达”窗口中的边栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-101",
+    "title": "隐藏或显示“访达”窗口中的状态栏",
+    "description": "显示或隐藏访达状态栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "/",
+      "symbolText": "⌘ /",
+      "readableText": "⌘ /"
+    },
+    "searchTerms": [
+      "隐藏或显示“访达”窗口中的状态栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-102",
+    "title": "显示“显示”选项",
+    "description": "显示访达的显示选项。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "J",
+      "symbolText": "⌘ J",
+      "readableText": "⌘ J"
+    },
+    "searchTerms": [
+      "显示“显示”选项",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-103",
+    "title": "打开“连接服务器”窗口",
+    "description": "打开“连接服务器”窗口。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "K",
+      "symbolText": "⌘ K",
+      "readableText": "⌘ K"
+    },
+    "searchTerms": [
+      "打开“连接服务器”窗口",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-104",
+    "title": "为所选项目制作替身",
+    "description": "在原位置为所选项目创建替身。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌃",
+        "⌘"
+      ],
+      "key": "A",
+      "symbolText": "⌃ ⌘ A",
+      "readableText": "⌃ ⌘ A"
+    },
+    "searchTerms": [
+      "为所选项目制作替身",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "在访达中选中项目",
+      "按 ⌃⌘A",
+      "在原位置生成替身"
+    ]
+  },
+  {
+    "id": "finder-apple-106",
+    "title": "新建一个智能文件夹",
+    "description": "新建智能文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "N",
+      "symbolText": "⌥ ⌘ N",
+      "readableText": "⌥ ⌘ N"
+    },
+    "searchTerms": [
+      "新建一个智能文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-107",
+    "title": "在当前“访达”窗口中只打开了一个标签页时，显示或隐藏标签页栏",
+    "description": "显示或隐藏访达标签页栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "T",
+      "symbolText": "⌘ T",
+      "readableText": "⌘ T"
+    },
+    "searchTerms": [
+      "在当前“访达”窗口中只打开了一个标签页时，显示或隐藏标签页栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-108",
+    "title": "在当前“访达”窗口中只打开了一个标签页时，显示或隐藏工具栏",
+    "description": "显示或隐藏访达工具栏。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "T",
+      "symbolText": "⌥ ⌘ T",
+      "readableText": "⌥ ⌘ T"
+    },
+    "searchTerms": [
+      "在当前“访达”窗口中只打开了一个标签页时，显示或隐藏工具栏",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-110",
+    "title": "使用“快速查看”预览所选文件",
+    "description": "用快速查看预览所选文件。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "Y",
+      "symbolText": "⌘ Y",
+      "readableText": "⌘ Y"
+    },
+    "searchTerms": [
+      "使用“快速查看”预览所选文件",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "在访达中选中文件",
+      "按 ⌘Y",
+      "查看快速预览"
+    ]
+  },
+  {
+    "id": "finder-apple-111",
+    "title": "快速查看所选文件的幻灯片放映",
+    "description": "以幻灯片放映方式快速查看文件。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⌘"
+      ],
+      "key": "Y",
+      "symbolText": "⌥ ⌘ Y",
+      "readableText": "⌥ ⌘ Y"
+    },
+    "searchTerms": [
+      "快速查看所选文件的幻灯片放映",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "在访达中选中一个或多个文件",
+      "按 ⌥⌘Y",
+      "浏览快速查看幻灯片"
+    ]
+  },
+  {
+    "id": "finder-apple-112",
+    "title": "以图标方式显示“访达”窗口中的项目",
+    "description": "将访达切换为图标视图。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "1",
+      "symbolText": "⌘ 1",
+      "readableText": "⌘ 1"
+    },
+    "searchTerms": [
+      "以图标方式显示“访达”窗口中的项目",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-113",
+    "title": "以列表方式显示“访达”窗口中的项目",
+    "description": "将访达切换为列表视图。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "2",
+      "symbolText": "⌘ 2",
+      "readableText": "⌘ 2"
+    },
+    "searchTerms": [
+      "以列表方式显示“访达”窗口中的项目",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-114",
+    "title": "以分栏方式显示“访达”窗口中的项目",
+    "description": "将访达切换为分栏视图。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "3",
+      "symbolText": "⌘ 3",
+      "readableText": "⌘ 3"
+    },
+    "searchTerms": [
+      "以分栏方式显示“访达”窗口中的项目",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-115",
+    "title": "以画廊方式显示“访达”窗口中的项目",
+    "description": "将访达切换为画廊视图。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "4",
+      "symbolText": "⌘ 4",
+      "readableText": "⌘ 4"
+    },
+    "searchTerms": [
+      "以画廊方式显示“访达”窗口中的项目",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-116",
+    "title": "前往上一个文件夹",
+    "description": "返回上一个文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "[",
+      "symbolText": "⌘ [",
+      "readableText": "⌘ ["
+    },
+    "searchTerms": [
+      "前往上一个文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-117",
+    "title": "前往下一个文件夹",
+    "description": "前往下一个文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌘"
+      ],
+      "key": "]",
+      "symbolText": "⌘ ]",
+      "readableText": "⌘ ]"
+    },
+    "searchTerms": [
+      "前往下一个文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-119",
+    "title": "在一个新窗口中打开包含当前文件夹的文件夹",
+    "description": "在新窗口打开当前文件夹的上一级文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌃",
+        "⌘"
+      ],
+      "key": "↑",
+      "symbolText": "⌃ ⌘ ↑",
+      "readableText": "⌃ ⌘ ↑"
+    },
+    "searchTerms": [
+      "在一个新窗口中打开包含当前文件夹的文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null
+  },
+  {
+    "id": "finder-apple-121",
+    "title": "打开所选文件夹",
+    "description": "在列表视图中展开所选文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [],
+      "key": "→",
+      "symbolText": "→",
+      "readableText": "→"
+    },
+    "searchTerms": [
+      "打开所选文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "切换到访达列表视图",
+      "选中文件夹",
+      "按 → 展开文件夹"
+    ]
+  },
+  {
+    "id": "finder-apple-122",
+    "title": "关闭所选文件夹",
+    "description": "在列表视图中收起所选文件夹。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [],
+      "key": "←",
+      "symbolText": "←",
+      "readableText": "←"
+    },
+    "searchTerms": [
+      "关闭所选文件夹",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": null,
+    "steps": [
+      "切换到访达列表视图",
+      "选中已展开的文件夹",
+      "按 ← 收起文件夹"
+    ]
+  },
+  {
+    "id": "finder-apple-124",
+    "title": "清倒废纸篓",
+    "description": "清倒废纸篓并显示确认对话框。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⇧",
+        "⌘"
+      ],
+      "key": "Delete",
+      "symbolText": "⇧ ⌘ Delete",
+      "readableText": "⇧ ⌘ Delete"
+    },
+    "searchTerms": [
+      "清倒废纸篓",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": "会显示确认对话框",
+    "steps": [
+      "打开废纸篓并确认内容",
+      "按 ⇧⌘Delete",
+      "在确认对话框中点击清倒"
+    ]
+  },
+  {
+    "id": "finder-apple-125",
+    "title": "清倒废纸篓而不显示确认对话框",
+    "description": "直接清倒废纸篓，不显示确认对话框。",
+    "category": "访达与系统",
+    "keys": {
+      "modifiers": [
+        "⌥",
+        "⇧",
+        "⌘"
+      ],
+      "key": "Delete",
+      "symbolText": "⌥ ⇧ ⌘ Delete",
+      "readableText": "⌥ ⇧ ⌘ Delete"
+    },
+    "searchTerms": [
+      "清倒废纸篓而不显示确认对话框",
+      "Finder",
+      "访达"
+    ],
+    "scope": "app",
+    "appIdentifier": "com.apple.finder",
+    "sourceURL": "https://support.apple.com/zh-cn/102650",
+    "caution": "清空后无法从废纸篓恢复",
+    "steps": [
+      "打开废纸篓并确认内容",
+      "按 ⌥⇧⌘Delete",
+      "直接清倒，不显示确认对话框"
+    ]
+  }
+]

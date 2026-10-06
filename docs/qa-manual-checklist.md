@@ -1,0 +1,39 @@
+# KeyFind Manual QA Checklist
+
+- [ ] Launch `KeyFindApp` and confirm it stays out of the Dock and appears as a menu bar utility.
+- [ ] Open the menu bar item and confirm it shows the current global shortcut and an `开机启动` toggle.
+- [ ] Toggle `开机启动`, relaunch, and confirm the setting remains enabled or disabled.
+- [ ] If the global shortcut is unavailable, confirm launch shows a clear registration warning instead of failing silently.
+- [ ] Press `⌘⇧ Space` and confirm the compact floating search panel opens with the field focused.
+- [ ] Type `截图`; confirm `⌘ ⇧ 3`, `⌘ ⇧ 4`, and `⌘ ⇧ 5` are suggested.
+- [ ] Type `截屏`; confirm it produces the same screenshot suggestions.
+- [ ] Type `切换窗口`; confirm the application/window switching result appears.
+- [ ] Type `删除文件`; confirm the result includes a caution message.
+- [ ] Use Up/Down to change selection and Return to copy the readable shortcut text.
+- [ ] Click a simple result row and confirm the shortcut is copied but not executed.
+- [ ] Click a result with detailed steps and confirm the row expands to show the workflow.
+- [ ] Toggle a favorite, relaunch, and confirm the favorite remains.
+- [ ] Open the favorites view and confirm it shows favorite rows rather than the home discovery screen.
+- [ ] Remove a favorite from the favorites view and confirm the row disappears immediately.
+- [ ] Remove the last favorite and confirm the empty state says there are no favorites.
+- [ ] Start typing while viewing favorites and confirm search results replace the favorites list.
+- [ ] From the menu bar, change the global shortcut; confirm the prompt says to press a combination and letter keys display as letters.
+- [ ] Record a Control-based shortcut and confirm it registers and persists after relaunch.
+- [ ] Try a shortcut already registered by macOS or another app; confirm KeyFind reports the failure and keeps the previous shortcut active.
+- [ ] Run several searches, relaunch, and confirm recent searches remain bounded and newest-first.
+- [ ] Clear the search with Escape and confirm the panel closes.
+- [ ] Run while offline and confirm search results remain available.
+- [ ] Run without Accessibility permission and confirm core lookup still works.
+- [ ] Open the Apple source link and confirm it points to `support.apple.com/zh-cn/102650`.
+- [ ] With an empty query, confirm the category browser includes “其他辅助功能”.
+- [ ] Open “访达与系统” and confirm the header shows the total count and the first six rows.
+- [ ] Select “显示更多快捷键” and confirm the next rows appear without the panel growing beyond its scroll area.
+- [ ] Search “移动文件” and confirm the four-step sequence remains visible: select file, `⌘C`, open target folder, `⌥⌘V`.
+- [ ] Search `Safari 新开标签` and `Safari新开标签`; confirm both return Safari's new-tab shortcut.
+- [ ] Search `苹果浏览器`; confirm Safari suggestions appear immediately.
+- [ ] Confirm source chips remain ordered as macOS, Google Chrome, 访达, Safari, Visual Studio Code, ChatGPT.
+- [ ] Search `ChatGPT 打开`; confirm the `⌥ Space` shortcut appears with its installation and conflict note.
+- [ ] Confirm an app-prefixed query still filters to that app even when another app is currently active.
+- [ ] Check light and dark macOS appearances for clipping or unreadable text.
+- [ ] When adding a new software source, verify its descriptor aliases, Bundle ID, official URL, and resource name pass registry validation.
+- [ ] When adding a new software source, verify searching only its name immediately shows suggestions and an app-prefixed query excludes other apps.
