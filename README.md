@@ -1,6 +1,17 @@
 # KeyFind
 
+KeyFind 是一个常驻 macOS 菜单栏的快捷键速查工具。按下 `Command-Shift-Space`，输入你想做的事情，例如“Mac 截图”“移动文件”“谷歌打开新标签页”，就能立即找到对应快捷键和使用说明。
+
 KeyFind is a small macOS menu bar utility with a SwiftUI search panel for looking up keyboard shortcuts by meaning. Press `Command-Shift-Space`, type what you want to do, and copy the matching shortcut without leaving the current app.
+
+如果你正在寻找 Mac 快捷键查询、macOS 快捷键搜索、苹果电脑快捷键、访达快捷键或 Chrome 快捷键，KeyFind 提供一个离线的中文搜索入口；也支持英文关键词和应用名前缀搜索。
+
+## 快速搜索示例
+
+- `Mac 截图`、`复制`、`撤销`：查询 macOS 系统快捷键
+- `访达 移动文件`、`Finder 新建文件夹`：查询 Finder 操作和组合键
+- `谷歌 打开新标签页`、`Chrome 恢复关闭的标签`：查询 Google Chrome 快捷键
+- `Safari 新开标签`、`VS Code 格式化代码`、`ChatGPT 打开`：查询其他已收录应用
 
 ## Features
 
