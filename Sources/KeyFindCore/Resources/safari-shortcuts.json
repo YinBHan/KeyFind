@@ -5,10 +5,10 @@
     "description": "在 Safari 当前窗口中打开一个新标签页。",
     "category": "常用操作",
     "keys": { "modifiers": ["⌘"], "key": "T", "symbolText": "⌘ T", "readableText": "⌘ Command + T" },
-    "searchTerms": ["新建标签页", "新标签", "打开标签页", "新开网页"],
+    "searchTerms": ["新建标签页", "新标签", "打开标签页", "新开网页", "新开标签"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘T", "在新标签页中输入网址或搜索内容"]
   },
@@ -21,7 +21,7 @@
     "searchTerms": ["关闭标签", "关闭网页", "关闭页面"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["切换到要关闭的标签页", "按 ⌘W"]
   },
@@ -34,7 +34,7 @@
     "searchTerms": ["恢复标签页", "恢复刚关闭的页面", "找回关闭的网页", "撤销关闭标签"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⇧⌘T", "重复按下可继续恢复最近关闭的标签页"]
   },
@@ -47,7 +47,7 @@
     "searchTerms": ["地址栏", "搜索栏", "网址栏", "输入网址", "定位地址栏"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘L", "输入网址或搜索词", "按回车打开"]
   },
@@ -60,7 +60,7 @@
     "searchTerms": ["网页查找", "页面搜索", "查网页文字", "查找文本"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘F", "输入要查找的文字", "按回车查看下一处匹配"]
   },
@@ -73,7 +73,7 @@
     "searchTerms": ["历史记录", "浏览记录", "访问记录", "看历史网页"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘Y", "在历史记录中查找已访问内容"]
   },
@@ -86,7 +86,7 @@
     "searchTerms": ["下载", "下载记录", "下载列表", "查看下载文件"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌥⌘L", "查看最近下载的文件"]
   },
@@ -99,7 +99,7 @@
     "searchTerms": ["刷新网页", "刷新页面", "重新加载", "网页刷新"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘R", "等待当前网页重新加载"]
   },
@@ -112,7 +112,7 @@
     "searchTerms": ["无痕模式", "私人浏览", "私密窗口", "隐私窗口", "私密浏览", "无痕窗口"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": "私人浏览不会让网络服务商、网站或单位网络看不到你的活动",
     "steps": ["按 ⇧⌘N", "在私人浏览窗口中打开网页"]
   },
@@ -125,7 +125,7 @@
     "searchTerms": ["恢复默认缩放", "重置网页缩放", "网页原始大小"],
     "scope": "app",
     "appIdentifier": "com.apple.Safari",
-    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac",
+    "sourceURL": "https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac",
     "caution": null,
     "steps": ["按 ⌘0", "网页恢复默认大小"]
   }

@@ -165,6 +165,16 @@ final class ShortcutSearchTests: XCTestCase {
         XCTAssertEqual(search.search("OpenAI ChatGPT", limit: 6).first?.id, "chatgpt-open")
     }
 
+    func testTerminalXcodeAndFigmaPrefixAndOnlyQueries() throws {
+        let search = ShortcutSearchService(shortcuts: try ShortcutCatalog().loadAll())
+
+        XCTAssertEqual(search.search("终端 清屏", limit: 20).first?.id, "terminal-clear-scrollback")
+        XCTAssertEqual(search.search("Xcode 编译", limit: 20).first?.id, "xcode-build")
+        XCTAssertEqual(search.search("Figma 复制样式", limit: 20).first?.id, "figma-copy-properties")
+        XCTAssertTrue(search.search("命令行", limit: 6).allSatisfy { $0.app == .terminal })
+        XCTAssertTrue(search.search("设计工具", limit: 6).allSatisfy { $0.app == .figma })
+    }
+
     func testEverydayPhrasesResolveToTheExpectedShortcut() throws {
         let search = ShortcutSearchService(shortcuts: try ShortcutCatalog().loadAll())
 
@@ -284,6 +294,41 @@ final class ShortcutSearchTests: XCTestCase {
 
     func testUnknownQueryReturnsNoResults() {
         XCTAssertTrue(ShortcutSearchService(shortcuts: catalog).search("火星飞船").isEmpty)
+    }
+
+    func testUnknownQueryDoesNotBecomeAResultFromPreferredAppBoost() {
+        let chromeShortcut = Shortcut(
+            id: "chrome-test", title: "打开新标签页", description: "在 Chrome 中打开新标签页。", category: .common,
+            keys: ShortcutKey(modifiers: ["⌘"], key: "T", readableText: "⌘ + T"),
+            searchTerms: ["新标签"], scope: .app, appIdentifier: ShortcutApp.chrome.bundleIdentifier,
+            sourceURL: "https://example.com", caution: nil
+        )
+
+        let search = ShortcutSearchService(shortcuts: [chromeShortcut])
+
+        XCTAssertTrue(search.search("火星飞船", preferredApp: .chrome).isEmpty)
+    }
+
+    func testPinyinInitialsFindChineseShortcut() {
+        let clipboard = Shortcut(
+            id: "clipboard", title: "剪贴板历史", description: "查看最近复制的内容。", category: .common,
+            keys: ShortcutKey(modifiers: ["⌘", "⇧"], key: "V", readableText: "⌘ ⇧ V"),
+            searchTerms: ["剪贴板", "复制历史"], scope: .system, appIdentifier: nil,
+            sourceURL: "https://example.com", caution: nil
+        )
+
+        XCTAssertEqual(ShortcutSearchService(shortcuts: [clipboard]).search("jtb").first?.id, "clipboard")
+    }
+
+    func testFullPinyinFindsChineseShortcut() {
+        let screenshot = Shortcut(
+            id: "screenshot", title: "屏幕截图", description: "截取当前屏幕。", category: .common,
+            keys: ShortcutKey(modifiers: ["⌘", "⇧"], key: "3", readableText: "⌘ ⇧ 3"),
+            searchTerms: ["截图", "截屏"], scope: .system, appIdentifier: nil,
+            sourceURL: "https://example.com", caution: nil
+        )
+
+        XCTAssertEqual(ShortcutSearchService(shortcuts: [screenshot]).search("pingmujietu").first?.id, "screenshot")
     }
 
     func testCategoryBrowseReturnsOnlyShortcutsInThatCategory() {

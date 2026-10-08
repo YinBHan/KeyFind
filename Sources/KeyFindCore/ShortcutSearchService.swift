@@ -1,12 +1,37 @@
 import Foundation
 
 public struct ShortcutSearchService: Sendable {
+    private struct PinyinVariants: Sendable {
+        let full: String
+        let initials: String
+    }
+
+    private struct SearchDocument: Sendable {
+        let title: String
+        let titlePinyin: PinyinVariants
+        let terms: [(value: String, pinyin: PinyinVariants)]
+        let description: String
+        let descriptionPinyin: PinyinVariants
+    }
+
     private let shortcuts: [Shortcut]
     private let sourceRegistry: ShortcutSourceRegistry
+    private let documents: [SearchDocument]
 
     public init(shortcuts: [Shortcut], sourceRegistry: ShortcutSourceRegistry = .default) {
         self.shortcuts = shortcuts
         self.sourceRegistry = sourceRegistry
+        self.documents = shortcuts.map { shortcut in
+            SearchDocument(
+                title: Self.normalize(shortcut.title),
+                titlePinyin: Self.pinyinVariants(for: shortcut.title),
+                terms: shortcut.searchTerms.map { term in
+                    (value: Self.normalize(term), pinyin: Self.pinyinVariants(for: term))
+                },
+                description: Self.normalize(shortcut.description),
+                descriptionPinyin: Self.pinyinVariants(for: shortcut.description)
+            )
+        }
     }
 
     public func search(_ query: String, limit: Int = 5) -> [Shortcut] {
@@ -103,24 +128,54 @@ public struct ShortcutSearchService: Sendable {
 
         return shortcuts.enumerated().compactMap { index, shortcut in
             guard sourceMatches(shortcut, effectiveSource) else { return nil }
-            let title = Self.normalize(shortcut.title)
-            let terms = shortcut.searchTerms.map(Self.normalize)
-            let description = Self.normalize(shortcut.description)
+            let document = documents[index]
             var score = -Double(index) / 1_000
+            var matched = false
 
-            if title == normalizedQuery {
-                score += 100
-            } else if title.contains(normalizedQuery) {
-                score += 75
+            let titleScore = Self.matchScore(
+                value: document.title,
+                pinyin: document.titlePinyin,
+                query: normalizedQuery,
+                exactScore: 100,
+                containsScore: 75,
+                pinyinExactScore: 88,
+                pinyinContainsScore: 62
+            )
+            if let titleScore {
+                matched = true
+                score += titleScore
             }
-            if terms.contains(normalizedQuery) {
-                score += 50
-            } else if terms.contains(where: { $0.contains(normalizedQuery) }) {
-                score += 35
+
+            let termScores = document.terms.compactMap { term in
+                Self.matchScore(
+                    value: term.value,
+                    pinyin: term.pinyin,
+                    query: normalizedQuery,
+                    exactScore: 50,
+                    containsScore: 35,
+                    pinyinExactScore: 44,
+                    pinyinContainsScore: 29
+                )
             }
-            if description.contains(normalizedQuery) {
-                score += 20
+            if let termScore = termScores.max() {
+                matched = true
+                score += termScore
             }
+
+            if let descriptionScore = Self.matchScore(
+                value: document.description,
+                pinyin: document.descriptionPinyin,
+                query: normalizedQuery,
+                exactScore: 20,
+                containsScore: 20,
+                pinyinExactScore: 17,
+                pinyinContainsScore: 14
+            ) {
+                matched = true
+                score += descriptionScore
+            }
+
+            guard matched else { return nil }
             if let targetApp {
                 if shortcut.app == targetApp {
                     score += requestedApp == targetApp ? 80 : 12
@@ -166,5 +221,35 @@ public struct ShortcutSearchService: Sendable {
             .lowercased()
             .replacingOccurrences(of: "\\s+", with: "", options: .regularExpression)
             .replacingOccurrences(of: "[，。！？、,.!?；;：:（）()「」『』“”‘’\"'、·—–-]", with: "", options: .regularExpression)
+    }
+
+    private static func pinyinVariants(for value: String) -> PinyinVariants {
+        let latin = value.applyingTransform(.toLatin, reverse: false) ?? value
+        let unaccented = latin.applyingTransform(.stripDiacritics, reverse: false) ?? latin
+        let full = normalize(unaccented)
+        let initials = latin
+            .split(whereSeparator: { $0.isWhitespace || $0.isPunctuation })
+            .compactMap { $0.first }
+            .map(String.init)
+            .joined()
+            .lowercased()
+        return PinyinVariants(full: full, initials: initials)
+    }
+
+    private static func matchScore(
+        value: String,
+        pinyin: PinyinVariants,
+        query: String,
+        exactScore: Double,
+        containsScore: Double,
+        pinyinExactScore: Double,
+        pinyinContainsScore: Double
+    ) -> Double? {
+        if value == query { return exactScore }
+        if value.contains(query) { return containsScore }
+        guard query.count >= 2 else { return nil }
+        if pinyin.full == query || pinyin.initials == query { return pinyinExactScore }
+        if pinyin.full.contains(query) || pinyin.initials.contains(query) { return pinyinContainsScore }
+        return nil
     }
 }

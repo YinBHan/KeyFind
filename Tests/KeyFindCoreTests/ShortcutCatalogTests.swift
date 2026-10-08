@@ -15,7 +15,7 @@ final class ShortcutCatalogTests: XCTestCase {
 
     func testAppSourcesExposeMetadataAndUnifiedLoading() throws {
         let catalog = ShortcutCatalog()
-        XCTAssertEqual(catalog.appSources.map(\.app), [.chrome, .finder, .safari, .vscode, .chatgpt])
+        XCTAssertEqual(catalog.appSources.map(\.app), [.chrome, .finder, .safari, .vscode, .chatgpt, .terminal, .xcode, .figma])
         XCTAssertEqual(catalog.appSources.first?.displayName, "Google Chrome")
         XCTAssertEqual(catalog.appSources.first?.bundleIdentifier, "com.google.Chrome")
         XCTAssertTrue(catalog.appSources.first?.searchAliases.contains("谷歌") == true)
@@ -26,6 +26,9 @@ final class ShortcutCatalogTests: XCTestCase {
         let safari = try catalog.load(.safari)
         let vscode = try catalog.loadVSCode()
         let chatgpt = try catalog.loadChatGPT()
+        let terminal = try catalog.load(.terminal)
+        let xcode = try catalog.load(.xcode)
+        let figma = try catalog.load(.figma)
         let all = try catalog.loadAll()
         XCTAssertEqual(chrome.count, chromeLegacy.count)
         XCTAssertGreaterThan(finder.count, 40)
@@ -36,18 +39,26 @@ final class ShortcutCatalogTests: XCTestCase {
         XCTAssertTrue(vscode.allSatisfy { $0.app == .vscode })
         XCTAssertEqual(chatgpt.count, 1)
         XCTAssertTrue(chatgpt.allSatisfy { $0.app == .chatgpt })
-        XCTAssertEqual(all.count, system.count + chrome.count + finder.count + safari.count + vscode.count + chatgpt.count)
+        XCTAssertTrue(terminal.allSatisfy { $0.app == .terminal })
+        XCTAssertTrue(xcode.allSatisfy { $0.app == .xcode })
+        XCTAssertTrue(figma.allSatisfy { $0.app == .figma })
+        XCTAssertEqual(try XCTUnwrap(xcode.first { $0.id == "xcode-clean-build" })?.keys.symbolText, "⌥ ⇧ ⌘ K")
+        XCTAssertEqual(try XCTUnwrap(xcode.first { $0.id == "xcode-navigate-back" })?.keys.symbolText, "⌃ ⌘ ←")
+        XCTAssertEqual(all.count, system.count + chrome.count + finder.count + safari.count + vscode.count + chatgpt.count + terminal.count + xcode.count + figma.count)
     }
 
     func testSourceRegistryResolvesAliasesInStableOrder() throws {
         let registry = ShortcutSourceRegistry.default
 
-        XCTAssertEqual(registry.descriptors.map(\.app), [.chrome, .finder, .safari, .vscode, .chatgpt])
+        XCTAssertEqual(registry.descriptors.map(\.app), [.chrome, .finder, .safari, .vscode, .chatgpt, .terminal, .xcode, .figma])
         XCTAssertEqual(registry.app(forAlias: "谷歌浏览器"), .chrome)
         XCTAssertEqual(registry.app(forAlias: "Finder"), .finder)
         XCTAssertEqual(registry.app(forAlias: "苹果浏览器"), .safari)
         XCTAssertEqual(registry.app(forAlias: "代码编辑器"), .vscode)
         XCTAssertEqual(registry.app(forAlias: "OpenAI ChatGPT"), .chatgpt)
+        XCTAssertEqual(registry.app(forAlias: "终端"), .terminal)
+        XCTAssertEqual(registry.app(forAlias: "Xcode"), .xcode)
+        XCTAssertEqual(registry.app(forAlias: "设计工具"), .figma)
         XCTAssertNil(registry.app(forAlias: "未知应用"))
         try registry.validate()
     }

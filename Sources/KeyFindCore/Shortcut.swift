@@ -20,6 +20,9 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
     case safari = "Safari"
     case vscode = "Visual Studio Code"
     case chatgpt = "ChatGPT"
+    case terminal = "终端"
+    case xcode = "Xcode"
+    case figma = "Figma"
 
     public var bundleIdentifier: String {
         switch self {
@@ -28,6 +31,9 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
         case .safari: return "com.apple.Safari"
         case .vscode: return "com.microsoft.VSCode"
         case .chatgpt: return "com.openai.chat"
+        case .terminal: return "com.apple.Terminal"
+        case .xcode: return "com.apple.dt.Xcode"
+        case .figma: return "com.figma.Desktop"
         }
     }
 
@@ -38,6 +44,9 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
         case .safari: return ["Safari", "苹果浏览器", "苹果自带浏览器", "浏览器 Safari"]
         case .vscode: return ["VS Code", "Visual Studio Code", "代码编辑器"]
         case .chatgpt: return ["ChatGPT", "OpenAI ChatGPT"]
+        case .terminal: return ["终端", "Terminal", "命令行", "终端机"]
+        case .xcode: return ["Xcode", "苹果开发", "iOS 开发"]
+        case .figma: return ["Figma", "设计工具", "原型设计"]
         }
     }
 }

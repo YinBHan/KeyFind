@@ -1,10 +1,34 @@
 # KeyFind
 
+> Offline keyboard shortcut finder for macOS. Search by intent in Chinese or English, use pinyin initials, see app-specific shortcuts, and copy the result without leaving your current app.
+
 KeyFind 是一个常驻 macOS 菜单栏的快捷键速查工具。按下 `Command-Shift-Space`，输入你想做的事情，例如“Mac 截图”“移动文件”“谷歌打开新标签页”，就能立即找到对应快捷键和使用说明。
 
 KeyFind is a small macOS menu bar utility with a SwiftUI search panel for looking up keyboard shortcuts by meaning. Press `Command-Shift-Space`, type what you want to do, and copy the matching shortcut without leaving the current app.
 
-如果你正在寻找 Mac 快捷键查询、macOS 快捷键搜索、苹果电脑快捷键、访达快捷键或 Chrome 快捷键，KeyFind 提供一个离线的中文搜索入口；也支持英文关键词和应用名前缀搜索。
+如果你正在寻找 Mac 快捷键查询、macOS 快捷键搜索、苹果电脑快捷键、访达快捷键、Chrome 快捷键、Terminal 快捷键、Xcode 快捷键或 Figma 快捷键，KeyFind 提供一个离线的中文搜索入口；支持中文同义词、拼音全拼、拼音首字母、英文关键词和应用名前缀搜索。
+
+KeyFind is a native macOS menu bar app for finding keyboard shortcuts by meaning. It is an offline shortcut reference and learning tool, not a keyboard remapper, clipboard manager, file search tool, or window manager. Search stays on your Mac, the app does not require Accessibility permission for lookup, and it never sends shortcuts to the active app.
+
+## What makes KeyFind useful
+
+- **Search by what you want to do**: type `截图`, `jtb`, `移动文件`, `Chrome 恢复标签`, or `Xcode 编译` instead of memorizing exact menu names.
+- **Chinese-first and bilingual**: Chinese synonyms, pinyin initials/full spelling, English terms, and common spoken phrases work together.
+- **App-aware results**: when Chrome, Safari, Finder, VS Code, ChatGPT, Terminal, Xcode, or Figma is in front, matching shortcuts from that app are ranked first.
+- **Offline and low-permission**: the catalog and search index are bundled locally; the lookup flow does not need Accessibility, Input Monitoring, an account, or a backend.
+- **Actionable answers**: results show readable keys, symbol keys, source links, and multi-step workflows such as moving a Finder file.
+
+### Search examples
+
+| You type | KeyFind helps you find |
+| --- | --- |
+| `jtb` or `剪贴板` | clipboard-related shortcuts and copy workflows |
+| `截图` or `pingmujietu` | macOS screenshot shortcuts |
+| `访达 移动文件` | Finder's cut-and-move sequence |
+| `Chrome 恢复关闭的标签` | Chrome's reopen-tab shortcut |
+| `终端 清屏` | Terminal's clear-screen shortcut |
+| `Xcode 编译` | Xcode's Build shortcut |
+| `Figma 复制样式` | Figma's copy-properties shortcut |
 
 ## 快速搜索示例
 
@@ -89,6 +113,9 @@ Shortcut data lives in `Sources/KeyFindCore/Resources/`:
 - `safari-shortcuts.json`: Safari shortcuts
 - `vscode-shortcuts.json`: Visual Studio Code shortcuts
 - `chatgpt-shortcuts.json`: ChatGPT macOS app shortcut
+- `terminal-shortcuts.json`: Apple Terminal shortcuts
+- `xcode-shortcuts.json`: Xcode menu and development shortcuts
+- `figma-shortcuts.json`: Figma design shortcuts
 
 Each record has a title, description, key representation, search terms, scope, and source URL. Add or update data first, then add a focused search or catalog test.
 
@@ -105,7 +132,7 @@ See [PRIVACY.md](PRIVACY.md) for details.
 
 ## Sources and content
 
-System shortcut data is curated from [Apple's Mac keyboard shortcuts reference](https://support.apple.com/zh-cn/102650). Chrome data is based on [Google Chrome's keyboard shortcuts reference](https://support.google.com/chrome/answer/157179). Safari data is based on Apple's [Safari keyboard shortcuts guide](https://support.apple.com/zh-cn/guide/safari/cpvchf8557f4/mac). Visual Studio Code data is based on Microsoft's [macOS keyboard shortcuts reference](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos). The ChatGPT entry is based on OpenAI's [ChatGPT macOS app help article](https://help.openai.com/en/articles/9982051-using-the-chatgpt-mac-app). The project stores concise descriptions and search terms rather than copying source page markup.
+System shortcut data is curated from [Apple's Mac keyboard shortcuts reference](https://support.apple.com/zh-cn/102650). Chrome data is based on [Google Chrome's keyboard shortcuts reference](https://support.google.com/chrome/answer/157179). Safari data is based on Apple's [Safari keyboard shortcuts guide](https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac). Visual Studio Code data is based on Microsoft's [keyboard shortcuts documentation](https://code.visualstudio.com/docs/configure/keybindings). The ChatGPT entry is based on OpenAI's [ChatGPT macOS app help article](https://help.openai.com/en/articles/9982051-using-the-chatgpt-mac-app). The project stores concise descriptions and search terms rather than copying source page markup.
 
 KeyFind is an independent project and is not affiliated with or endorsed by Apple, Google, Microsoft, or OpenAI. Product names and logos remain the property of their respective owners. See [NOTICE.md](NOTICE.md) for the code, data, and attribution boundary.
 

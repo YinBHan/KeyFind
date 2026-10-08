@@ -424,6 +424,18 @@ private final class HotKeyRecorderView: NSView {
     }
 }
 
+enum ShortcutCopyFormat {
+    case symbol
+    case readable
+
+    func text(for shortcut: Shortcut) -> String {
+        switch self {
+        case .symbol: return shortcut.keys.symbolText
+        case .readable: return shortcut.keys.readableText
+        }
+    }
+}
+
 @MainActor
 final class SearchPanelModel: ObservableObject {
     private let pageSize = 6
@@ -470,6 +482,11 @@ final class SearchPanelModel: ObservableObject {
     var requestedAppCount: Int {
         guard let requestedApp else { return 0 }
         return searchService.count(for: requestedApp)
+    }
+
+    var preferredAppInfo: ShortcutAppInfo? {
+        guard let preferredApp else { return nil }
+        return catalog.appSources.first { $0.app == preferredApp }
     }
 
     init(settings: AppSettings) {
@@ -581,9 +598,9 @@ final class SearchPanelModel: ObservableObject {
         objectWillChange.send()
     }
 
-    func copy(_ shortcut: Shortcut) {
+    func copy(_ shortcut: Shortcut, format: ShortcutCopyFormat = .readable) {
         NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(shortcut.keys.readableText, forType: .string)
+        NSPasteboard.general.setString(format.text(for: shortcut), forType: .string)
         settings.recordSearch(query)
         copiedShortcutID = shortcut.id
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) { [weak self] in
@@ -637,6 +654,16 @@ struct SearchPanelView: View {
                     .font(.system(size: 20))
                     .focused($isSearchFocused)
                     .onSubmit { if let shortcut = model.selectedShortcut() { model.copy(shortcut) } }
+                if let preferredAppInfo = model.preferredAppInfo {
+                    Label(preferredAppInfo.displayName, systemImage: "scope")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 4)
+                        .background(.quaternary.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
+                        .help("按当前应用优先排序")
+                }
                 Text(model.settings.globalHotKey.displayName)
                     .font(.system(size: 10, design: .monospaced))
                     .foregroundStyle(.secondary)
@@ -760,6 +787,7 @@ struct SearchPanelView: View {
                                     favorite: model.settings.favoriteIDs.contains(shortcut.id),
                                     copied: model.copiedShortcutID == shortcut.id,
                                     onCopy: { model.copy(shortcut) },
+                                    onCopySymbol: { model.copy(shortcut, format: .symbol) },
                                     onFavorite: { model.toggleFavorite(shortcut) }
                                 )
                                     .onHover { if $0 { model.selectedIndex = index } }
@@ -883,6 +911,9 @@ private struct SourceFilterView: View {
         case .app(.chrome): return "globe"
         case .app(.vscode): return "chevron.left.forwardslash.chevron.right"
         case .app(.chatgpt): return "bubble.left.and.bubble.right"
+        case .app(.terminal): return "terminal"
+        case .app(.xcode): return "hammer"
+        case .app(.figma): return "pencil.and.ruler"
         }
     }
 }
@@ -1108,6 +1139,7 @@ struct ShortcutRow: View {
     let favorite: Bool
     let copied: Bool
     let onCopy: () -> Void
+    let onCopySymbol: () -> Void
     let onFavorite: () -> Void
     @State private var expanded = false
 
@@ -1153,8 +1185,10 @@ struct ShortcutRow: View {
             }
             Button(action: onFavorite) { Image(systemName: favorite ? "star.fill" : "star").font(.system(size: 12)) }
                 .buttonStyle(.plain).foregroundStyle(favorite ? .orange : .secondary).help("收藏").opacity(selected ? 1 : 0.4)
+            Button(action: onCopySymbol) { Image(systemName: "command").font(.system(size: 12)) }
+                .buttonStyle(.plain).foregroundStyle(.secondary).help("复制符号形式")
             Button(action: onCopy) { Image(systemName: copied ? "checkmark" : "doc.on.clipboard").font(.system(size: 12)) }
-                .buttonStyle(.plain).foregroundStyle(.secondary).help("复制快捷键")
+                .buttonStyle(.plain).foregroundStyle(.secondary).help("复制可读文本")
         }
         .padding(.horizontal, 11)
         .padding(.vertical, 8)

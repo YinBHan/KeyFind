@@ -8,7 +8,7 @@
     "searchTerms": ["命令面板", "执行命令", "command palette"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⇧⌘P", "输入命令名称", "按回车执行"]
   },
@@ -21,7 +21,7 @@
     "searchTerms": ["快速打开", "打开文件", "查找文件", "quick open"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⌘P", "输入文件名", "按回车打开"]
   },
@@ -34,7 +34,7 @@
     "searchTerms": ["全局搜索", "搜索项目", "搜索代码", "查找内容"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⇧⌘F", "输入搜索内容", "查看匹配结果"]
   },
@@ -47,7 +47,7 @@
     "searchTerms": ["打开终端", "隐藏终端", "集成终端", "terminal"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⌃`", "终端面板在显示和隐藏之间切换"]
   },
@@ -60,7 +60,7 @@
     "searchTerms": ["格式化代码", "整理代码", "格式化文档", "format document"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": "格式化效果取决于当前语言和已安装的格式化扩展。",
     "steps": ["打开要格式化的文件", "按 ⇧⌥F", "检查格式化结果"]
   },
@@ -73,7 +73,7 @@
     "searchTerms": ["新建文件", "创建文件", "new file"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⌘N", "输入内容", "按 ⌘S 保存文件"]
   },
@@ -86,7 +86,7 @@
     "searchTerms": ["关闭文件", "关闭标签", "关闭编辑器"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["切换到要关闭的编辑器", "按 ⌘W"]
   },
@@ -99,7 +99,7 @@
     "searchTerms": ["跳转行", "指定行", "行号"],
     "scope": "app",
     "appIdentifier": "com.microsoft.VSCode",
-    "sourceURL": "https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos",
+    "sourceURL": "https://code.visualstudio.com/docs/configure/keybindings",
     "caution": null,
     "steps": ["按 ⌘G", "输入行号", "按回车跳转"]
   }

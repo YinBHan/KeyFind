@@ -13,6 +13,19 @@
     "steps": ["按 ⌘T", "在新标签页中输入网址或搜索内容"]
   },
   {
+    "id": "chrome-copy",
+    "title": "复制选中内容",
+    "description": "复制 Chrome 中选中的文字、链接或其他内容。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "C", "symbolText": "⌘ C", "readableText": "⌘ Command + C" },
+    "searchTerms": ["复制", "拷贝", "复制内容", "copy"],
+    "scope": "app",
+    "appIdentifier": "com.google.Chrome",
+    "sourceURL": "https://support.google.com/chrome/answer/157179",
+    "caution": null,
+    "steps": ["选中网页中的文字、链接或内容", "按 ⌘C"]
+  },
+  {
     "id": "chrome-close-tab",
     "title": "关闭当前标签页",
     "description": "关闭 Chrome 当前选中的标签页。",

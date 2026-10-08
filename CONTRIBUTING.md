@@ -8,7 +8,7 @@ KeyFind is intentionally small and offline-first. Keep changes focused on fast l
 
 1. Edit the appropriate JSON file in `Sources/KeyFindCore/Resources/`.
 2. Keep IDs stable and unique.
-3. Include a concise description, useful Chinese and English search terms where appropriate, readable key symbols, and an official source URL.
+3. Include a concise description, useful Chinese and English search terms where appropriate, pinyin-friendly Chinese titles or aliases, readable key symbols, and an official source URL.
 4. Add a focused test for a new alias or important workflow.
 
 ## Local verification
