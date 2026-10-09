@@ -23,6 +23,8 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
     case terminal = "终端"
     case xcode = "Xcode"
     case figma = "Figma"
+    case notion = "Notion"
+    case raycast = "Raycast"
 
     public var bundleIdentifier: String {
         switch self {
@@ -34,6 +36,8 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
         case .terminal: return "com.apple.Terminal"
         case .xcode: return "com.apple.dt.Xcode"
         case .figma: return "com.figma.Desktop"
+        case .notion: return "notion.id"
+        case .raycast: return "com.raycast.macos"
         }
     }
 
@@ -47,6 +51,8 @@ public enum ShortcutApp: String, Codable, CaseIterable, Equatable, Sendable {
         case .terminal: return ["终端", "Terminal", "命令行", "终端机"]
         case .xcode: return ["Xcode", "苹果开发", "iOS 开发"]
         case .figma: return ["Figma", "设计工具", "原型设计"]
+        case .notion: return ["Notion", "笔记", "知识库", "文档"]
+        case .raycast: return ["Raycast", "启动器", "命令启动器"]
         }
     }
 }

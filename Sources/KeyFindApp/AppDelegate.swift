@@ -542,6 +542,10 @@ final class SearchPanelModel: ObservableObject {
         query = value
     }
 
+    func openIssueReport() {
+        NSWorkspace.shared.open(URL(string: "https://github.com/YinBHan/KeyFind/issues/new/choose")!)
+    }
+
     func selectSource(_ source: ShortcutSource?) {
         selectedSource = source
         browseCategory = nil
@@ -701,6 +705,7 @@ struct SearchPanelView: View {
                 DiscoveryView(
                     recentSearches: model.settings.recentSearches,
                     onRecentSearch: model.selectRecentSearch,
+                    onExample: model.selectRecentSearch,
                     onCategory: model.browse
                 )
             } else {
@@ -761,6 +766,19 @@ struct SearchPanelView: View {
                         Text(model.catalogError.map { _ in "快捷键数据加载失败" } ?? (model.favoritesOnly ? "还没有收藏的快捷键" : "没有找到匹配的快捷键"))
                             .font(.system(size: 12, weight: .medium))
                             .foregroundStyle(.secondary)
+                        if model.catalogError == nil && !model.favoritesOnly && !model.query.isEmpty {
+                            Text("试试“截图”“移动文件”或“Chrome 新标签页”")
+                                .font(.system(size: 10))
+                                .foregroundStyle(.tertiary)
+                            HStack(spacing: 8) {
+                                Button("提交缺失快捷键") { model.openIssueReport() }
+                                    .buttonStyle(.plain)
+                                    .font(.system(size: 10, weight: .medium))
+                                    .foregroundStyle(Color.accentColor)
+                                Link("查看贡献指南", destination: URL(string: "https://github.com/YinBHan/KeyFind/blob/main/CONTRIBUTING.md")!)
+                                    .font(.system(size: 10))
+                            }
+                        }
                         if let catalogError = model.catalogError {
                             Text(catalogError)
                                 .font(.system(size: 10))
@@ -865,7 +883,7 @@ struct SearchPanelView: View {
                 let sourceHeight: CGFloat = model.browseCategory == nil && !model.results.isEmpty && model.availableSources.count > 1 ? 36 : 0
                 let summaryHeight: CGFloat = model.results.isEmpty ? 0 : 24
                 let footerHeight: CGFloat = model.results.isEmpty ? 0 : 38
-                let emptyStateHeight: CGFloat = model.results.isEmpty ? 74 : 0
+                let emptyStateHeight: CGFloat = model.results.isEmpty ? 112 : 0
                 extraHeight = 72 + headingHeight + sourceHeight + summaryHeight + footerHeight + emptyStateHeight + resultHeight
             }
             panel.resize(to: NSSize(width: 560, height: extraHeight))
@@ -914,6 +932,8 @@ private struct SourceFilterView: View {
         case .app(.terminal): return "terminal"
         case .app(.xcode): return "hammer"
         case .app(.figma): return "pencil.and.ruler"
+        case .app(.notion): return "doc.text"
+        case .app(.raycast): return "bolt"
         }
     }
 }
@@ -974,7 +994,10 @@ private struct AppOverviewView: View {
 struct DiscoveryView: View {
     let recentSearches: [String]
     let onRecentSearch: (String) -> Void
+    let onExample: (String) -> Void
     let onCategory: (ShortcutCategory) -> Void
+
+    private let examples = ["截图", "移动文件", "Chrome 新标签页", "Notion 搜索页面"]
 
     private let columns = [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)]
 
@@ -993,6 +1016,21 @@ struct DiscoveryView: View {
                             }
                             .buttonStyle(DiscoveryChipStyle())
                         }
+                    }
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("试试搜索")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(.secondary)
+                HStack(spacing: 6) {
+                    ForEach(examples, id: \.self) { value in
+                        Button { onExample(value) } label: {
+                            Label(value, systemImage: "sparkle.magnifyingglass")
+                                .lineLimit(1)
+                        }
+                        .buttonStyle(DiscoveryChipStyle())
                     }
                 }
             }

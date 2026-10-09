@@ -6,7 +6,7 @@ KeyFind 是一个常驻 macOS 菜单栏的快捷键速查工具。按下 `Comman
 
 KeyFind is a small macOS menu bar utility with a SwiftUI search panel for looking up keyboard shortcuts by meaning. Press `Command-Shift-Space`, type what you want to do, and copy the matching shortcut without leaving the current app.
 
-如果你正在寻找 Mac 快捷键查询、macOS 快捷键搜索、苹果电脑快捷键、访达快捷键、Chrome 快捷键、Terminal 快捷键、Xcode 快捷键或 Figma 快捷键，KeyFind 提供一个离线的中文搜索入口；支持中文同义词、拼音全拼、拼音首字母、英文关键词和应用名前缀搜索。
+如果你正在寻找 Mac 快捷键查询、macOS 快捷键搜索、苹果电脑快捷键、访达快捷键、Chrome 快捷键、Terminal 快捷键、Xcode 快捷键、Figma 快捷键、Notion 快捷键或 Raycast 快捷键，KeyFind 提供一个离线的中文搜索入口；支持中文同义词、拼音全拼、拼音首字母、英文关键词和应用名前缀搜索。
 
 KeyFind is a native macOS menu bar app for finding keyboard shortcuts by meaning. It is an offline shortcut reference and learning tool, not a keyboard remapper, clipboard manager, file search tool, or window manager. Search stays on your Mac, the app does not require Accessibility permission for lookup, and it never sends shortcuts to the active app.
 
@@ -29,6 +29,8 @@ KeyFind is a native macOS menu bar app for finding keyboard shortcuts by meaning
 | `终端 清屏` | Terminal's clear-screen shortcut |
 | `Xcode 编译` | Xcode's Build shortcut |
 | `Figma 复制样式` | Figma's copy-properties shortcut |
+| `Notion 搜索页面` | Notion's workspace search shortcut |
+| `Raycast 打开设置` | Raycast's settings shortcut |
 
 ## 快速搜索示例
 
@@ -42,8 +44,9 @@ KeyFind is a native macOS menu bar app for finding keyboard shortcuts by meaning
 - Native SwiftUI menu bar utility for macOS 13 or later
 - Fast, offline search with Chinese synonyms and common spoken phrases
 - macOS system shortcuts, Google Chrome, Finder, Safari, Visual Studio Code, and ChatGPT shortcuts
+- Terminal, Xcode, Figma, Notion, and Raycast sources with official reference links
 - App-prefixed search such as `谷歌 打开新标签页`, `访达 移动文件`, `Safari 新开标签`, or `ChatGPT 打开`
-- Source filters for macOS, Google Chrome, Finder, Safari, Visual Studio Code, and ChatGPT
+- Source filters for every bundled catalog, including macOS, browsers, developer tools, design tools, Notion, and Raycast
 - Copy a readable shortcut with Return, a result-row click, or the copy button
 - Local favorites and recent searches
 - Compact category browsing and official source links
@@ -56,17 +59,20 @@ Build a local release package:
 
 ```bash
 ./scripts/build-app.sh
-open KeyFind.app
+open .build/distribution/KeyFind.app
 ```
 
 Builds require macOS 13 or later and the Xcode 15+ command-line toolchain. If
 Xcode is installed outside the selected developer directory, set
 `DEVELOPER_DIR` before running the script.
 
-The build creates `dist/KeyFind-0.1.0-macOS.zip` and
-`dist/KeyFind-0.1.0-macOS.dmg`. These local packages are ad hoc signed for
+The build creates `.build/distribution/dist/KeyFind-0.2.0-macOS.zip` and
+`.build/distribution/dist/KeyFind-0.2.0-macOS.dmg`. These local packages are ad hoc signed for
 development and testing; public distribution should use a Developer ID
 signature and notarization.
+
+The build refuses to overwrite an existing app or archive. To rebuild, choose a
+new output directory with `KEYFIND_BUILD_OUTPUT_DIR=/path/to/output`.
 
 The package and app bundle are built for the architecture of the current Mac.
 The script does not create a universal binary.
@@ -116,6 +122,8 @@ Shortcut data lives in `Sources/KeyFindCore/Resources/`:
 - `terminal-shortcuts.json`: Apple Terminal shortcuts
 - `xcode-shortcuts.json`: Xcode menu and development shortcuts
 - `figma-shortcuts.json`: Figma design shortcuts
+- `notion-shortcuts.json`: Notion workspace and editor shortcuts
+- `raycast-shortcuts.json`: Raycast launcher shortcuts
 
 Each record has a title, description, key representation, search terms, scope, and source URL. Add or update data first, then add a focused search or catalog test.
 
@@ -132,9 +140,9 @@ See [PRIVACY.md](PRIVACY.md) for details.
 
 ## Sources and content
 
-System shortcut data is curated from [Apple's Mac keyboard shortcuts reference](https://support.apple.com/zh-cn/102650). Chrome data is based on [Google Chrome's keyboard shortcuts reference](https://support.google.com/chrome/answer/157179). Safari data is based on Apple's [Safari keyboard shortcuts guide](https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac). Visual Studio Code data is based on Microsoft's [keyboard shortcuts documentation](https://code.visualstudio.com/docs/configure/keybindings). The ChatGPT entry is based on OpenAI's [ChatGPT macOS app help article](https://help.openai.com/en/articles/9982051-using-the-chatgpt-mac-app). The project stores concise descriptions and search terms rather than copying source page markup.
+System shortcut data is curated from [Apple's Mac keyboard shortcuts reference](https://support.apple.com/zh-cn/102650). Chrome data is based on [Google Chrome's keyboard shortcuts reference](https://support.google.com/chrome/answer/157179). Safari data is based on Apple's [Safari keyboard shortcuts guide](https://support.apple.com/zh-cn/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac). Visual Studio Code data is based on Microsoft's [keyboard shortcuts documentation](https://code.visualstudio.com/docs/configure/keybindings). The ChatGPT entry is based on OpenAI's [ChatGPT macOS app help article](https://help.openai.com/en/articles/9982051-using-the-chatgpt-mac-app). Notion data is based on [Notion's keyboard shortcuts guide](https://www.notion.com/help/keyboard-shortcuts), and Raycast data is based on [Raycast's keyboard shortcuts manual](https://manual.raycast.com/keyboard-shortcuts). The project stores concise descriptions and search terms rather than copying source page markup.
 
-KeyFind is an independent project and is not affiliated with or endorsed by Apple, Google, Microsoft, or OpenAI. Product names and logos remain the property of their respective owners. See [NOTICE.md](NOTICE.md) for the code, data, and attribution boundary.
+KeyFind is an independent project and is not affiliated with or endorsed by Apple, Google, Microsoft, OpenAI, Notion, Raycast, or any other product listed here. Product names and logos remain the property of their respective owners. See [NOTICE.md](NOTICE.md) for the code, data, and attribution boundary. See [docs/source-status.md](docs/source-status.md) for source verification dates and update policy.
 
 ## Contributing
 

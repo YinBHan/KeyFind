@@ -23,13 +23,15 @@ fi
 
 swift build -c release --product KeyFindApp
 
-APP="$PROJECT_DIR/KeyFind.app"
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PROJECT_DIR/Resources/Info.plist")"
-DIST_DIR="$PROJECT_DIR/dist"
-rm -rf "$APP"
-rm -rf "$DIST_DIR"
-mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-mkdir -p "$DIST_DIR" "$PROJECT_DIR/.build/KeyFind.iconset"
+OUTPUT_ROOT="${KEYFIND_BUILD_OUTPUT_DIR:-$PROJECT_DIR/.build/distribution}"
+APP="$OUTPUT_ROOT/KeyFind.app"
+DIST_DIR="$OUTPUT_ROOT/dist"
+if [[ -e "$APP" || -e "$DIST_DIR/KeyFind-$VERSION-macOS.zip" || -e "$DIST_DIR/KeyFind-$VERSION-macOS.dmg" ]]; then
+  print -u2 "Refusing to overwrite an existing package in $OUTPUT_ROOT. Set KEYFIND_BUILD_OUTPUT_DIR to a new directory."
+  exit 1
+fi
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$DIST_DIR"
 PRODUCT_DIR="$(swift build -c release --product KeyFindApp --show-bin-path)"
 if [[ ! -x "$PRODUCT_DIR/KeyFindApp" ]]; then
   print -u2 "KeyFindApp was not found in SwiftPM's release bin path: $PRODUCT_DIR"
@@ -43,8 +45,8 @@ cp "$PRODUCT_DIR/KeyFindApp" "$APP/Contents/MacOS/KeyFindApp"
 cp "$PROJECT_DIR/Resources/Info.plist" "$APP/Contents/Info.plist"
 cp -R "$PRODUCT_DIR/KeyFind_KeyFindCore.bundle" "$APP/Contents/Resources/"
 
-ICONSET="$PROJECT_DIR/.build/KeyFind.iconset"
-rm -rf "$ICONSET"
+ICONSET="$(mktemp -d "${TMPDIR:-/tmp}/keyfind-iconset.XXXXXX.iconset")"
+trap 'rm -rf "$ICONSET"' EXIT
 mkdir -p "$ICONSET"
 ICON_SOURCE="$PROJECT_DIR/Resources/KeyFind-icon.svg"
 for size in 16 32 128 256 512; do

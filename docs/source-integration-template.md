@@ -65,7 +65,7 @@ ShortcutSourceDescriptor(
 
 在 `ShortcutApp` 中增加新的 case，并提供其 `bundleIdentifier`。兼容性的 `load(_:)` API、来源筛选和收藏功能会继续复用同一身份。
 
-当前已接入的来源包括 macOS、Google Chrome、访达、Safari、Visual Studio Code、ChatGPT、终端、Xcode 和 Figma。
+当前已接入的来源包括 macOS、Google Chrome、访达、Safari、Visual Studio Code、ChatGPT、终端、Xcode、Figma、Notion 和 Raycast。
 
 ## 验证命令
 

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "raycast-open",
+    "title": "打开或关闭 Raycast",
+    "description": "从任意应用打开或关闭 Raycast 搜索窗口，默认快捷键可在设置中修改。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌥"], "key": "Space", "symbolText": "⌥ Space", "readableText": "⌥ Option + Space" },
+    "searchTerms": ["打开 Raycast", "启动器", "命令启动器", "launch raycast"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": "Raycast 的全局快捷键可以自定义；官方 Mac 默认值为 ⌥ Space。", "steps": null
+  },
+  {
+    "id": "raycast-action-panel",
+    "title": "打开操作面板",
+    "description": "在 Raycast 搜索结果中打开当前项目的操作面板。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "K", "symbolText": "⌘ K", "readableText": "⌘ Command + K" },
+    "searchTerms": ["操作面板", "动作面板", "命令操作", "action panel"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-settings",
+    "title": "打开 Raycast 设置",
+    "description": "打开 Raycast 设置页面。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": ",", "symbolText": "⌘ ,", "readableText": "⌘ Command + ," },
+    "searchTerms": ["打开设置", "偏好设置", "配置 Raycast", "settings"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-user-guide",
+    "title": "打开 Raycast 用户指南",
+    "description": "打开 Raycast 用户指南。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⇧", "⌘"], "key": "/", "symbolText": "⇧ ⌘ /", "readableText": "⇧ Shift + ⌘ Command + /" },
+    "searchTerms": ["用户指南", "帮助", "帮助文档", "user guide"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-close",
+    "title": "关闭 Raycast 窗口",
+    "description": "关闭当前 Raycast 窗口。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "W", "symbolText": "⌘ W", "readableText": "⌘ Command + W" },
+    "searchTerms": ["关闭窗口", "退出窗口", "close raycast"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-favorite",
+    "title": "收藏当前项目",
+    "description": "将当前选中的 Raycast 项目加入收藏。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "F", "symbolText": "⌘ F", "readableText": "⌘ Command + F" },
+    "searchTerms": ["收藏", "加入收藏", "favorite"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-copy",
+    "title": "复制当前项目",
+    "description": "复制 Raycast 当前选中项目。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "C", "symbolText": "⌘ C", "readableText": "⌘ Command + C" },
+    "searchTerms": ["复制项目", "复制", "copy item"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-open-item",
+    "title": "打开当前项目",
+    "description": "打开 Raycast 当前选中的项目。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "O", "symbolText": "⌘ O", "readableText": "⌘ Command + O" },
+    "searchTerms": ["打开项目", "打开结果", "open item"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  },
+  {
+    "id": "raycast-quick-look",
+    "title": "预览当前项目",
+    "description": "在 Raycast 中切换当前项目的快速预览。",
+    "category": "常用操作",
+    "keys": { "modifiers": ["⌘"], "key": "Y", "symbolText": "⌘ Y", "readableText": "⌘ Command + Y" },
+    "searchTerms": ["快速预览", "预览项目", "quick look"],
+    "scope": "app", "appIdentifier": "com.raycast.macos", "sourceURL": "https://manual.raycast.com/keyboard-shortcuts", "caution": null, "steps": null
+  }
+]

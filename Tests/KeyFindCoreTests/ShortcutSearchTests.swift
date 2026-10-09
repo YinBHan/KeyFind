@@ -175,6 +175,15 @@ final class ShortcutSearchTests: XCTestCase {
         XCTAssertTrue(search.search("设计工具", limit: 6).allSatisfy { $0.app == .figma })
     }
 
+    func testNotionAndRaycastPrefixAndOnlyQueries() throws {
+        let search = ShortcutSearchService(shortcuts: try ShortcutCatalog().loadAll())
+
+        XCTAssertEqual(search.search("Notion 搜索页面", limit: 20).first?.id, "notion-search")
+        XCTAssertEqual(search.search("Raycast 打开设置", limit: 20).first?.id, "raycast-settings")
+        XCTAssertTrue(search.search("笔记", limit: 6).allSatisfy { $0.app == .notion })
+        XCTAssertTrue(search.search("启动器", limit: 6).allSatisfy { $0.app == .raycast })
+    }
+
     func testEverydayPhrasesResolveToTheExpectedShortcut() throws {
         let search = ShortcutSearchService(shortcuts: try ShortcutCatalog().loadAll())
 
