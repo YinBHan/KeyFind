@@ -101,8 +101,15 @@ struct ShortcutRow: View {
                 .buttonStyle(.plain).foregroundStyle(favorite ? .orange : .secondary).help("收藏").opacity(selected ? 1 : 0.4)
             Button(action: onCopySymbol) { Image(systemName: "command").font(.system(size: 12)) }
                 .buttonStyle(.plain).foregroundStyle(.secondary).help("复制符号形式")
-            Button(action: onCopy) { Image(systemName: copied ? "checkmark" : "doc.on.clipboard").font(.system(size: 12)) }
-                .buttonStyle(.plain).foregroundStyle(.secondary).help("复制可读文本")
+            Button(action: onCopy) {
+                Image(systemName: copied ? "checkmark" : "doc.on.clipboard")
+                    .font(.system(size: 12))
+                    .foregroundStyle(copied ? Color.green : Color.secondary)
+                    .scaleEffect(copied ? 1.18 : 1)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: copied)
+            }
+            .buttonStyle(.plain)
+            .help("复制可读文本")
         }
         .padding(.horizontal, 11)
         .padding(.vertical, 8)
