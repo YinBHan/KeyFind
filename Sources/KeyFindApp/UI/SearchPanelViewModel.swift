@@ -80,8 +80,26 @@ final class SearchPanelViewModel: ObservableObject {
             shortcuts = try catalog.loadAll()
             catalogError = nil
         } catch {
-            shortcuts = []
-            catalogError = error.localizedDescription
+            let loadAllError: String
+            if let catalogError = error as? ShortcutCatalogError {
+                loadAllError = catalogError.localizedDescription
+            } else {
+                loadAllError = "数据文件读取失败：\(error.localizedDescription)"
+            }
+
+            do {
+                shortcuts = try catalog.load()
+                catalogError = "\(loadAllError)\n\n已加载 macOS 系统快捷键，应用快捷键暂不可用。"
+            } catch {
+                let fallbackError: String
+                if let catalogError = error as? ShortcutCatalogError {
+                    fallbackError = catalogError.localizedDescription
+                } else {
+                    fallbackError = "数据文件读取失败：\(error.localizedDescription)"
+                }
+                shortcuts = []
+                catalogError = "\(loadAllError)\n\n系统快捷键也无法加载：\(fallbackError)"
+            }
         }
         self.catalogError = catalogError
         let app = NSWorkspace.shared.frontmostApplication?.bundleIdentifier
