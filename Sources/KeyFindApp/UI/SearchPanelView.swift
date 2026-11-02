@@ -179,7 +179,8 @@ struct SearchPanelView: View {
                                 Button {
                                     model.showMore()
                                 } label: {
-                                    Label("显示更多快捷键", systemImage: "chevron.down")
+                                    let remaining = max(model.totalResultCount - model.results.count, 0)
+                                    Label("显示更多 (还有 \(remaining) 条)", systemImage: "chevron.down")
                                         .frame(maxWidth: .infinity)
                                 }
                                 .buttonStyle(MoreResultsButtonStyle())
