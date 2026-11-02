@@ -651,61 +651,59 @@ struct SearchPanelView: View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 Image(systemName: "magnifyingglass")
-                    .font(.system(size: 18))
-                    .foregroundStyle(.secondary)
-                TextField("搜索快捷键…", text: $model.query)
+                    .font(.system(size: 17, weight: .medium))
+                    .foregroundStyle(Color.accentColor)
+                    .frame(width: 34, height: 34)
+                    .background(Color.accentColor.opacity(0.10), in: Circle())
+                TextField("搜索操作或快捷键", text: $model.query)
                     .textFieldStyle(.plain)
-                    .font(.system(size: 20))
+                    .font(.system(size: 19, weight: .regular))
                     .focused($isSearchFocused)
                     .onSubmit { if let shortcut = model.selectedShortcut() { model.copy(shortcut) } }
                 if let preferredAppInfo = model.preferredAppInfo {
                     Label(preferredAppInfo.displayName, systemImage: "scope")
-                        .font(.system(size: 9, weight: .medium))
+                        .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 4)
-                        .background(.quaternary.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 6)
+                        .background(Color.primary.opacity(0.055), in: Capsule())
                         .help("按当前应用优先排序")
                 }
-                Text(model.settings.globalHotKey.displayName)
-                    .font(.system(size: 10, design: .monospaced))
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 7)
-                    .padding(.vertical, 5)
-                    .background(.quaternary.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
-            }
-            .padding(.horizontal, 19)
-            .frame(height: 72)
-            Divider().opacity(0.55)
-
-            if model.query.isEmpty && model.browseCategory == nil && !model.favoritesOnly {
-                HStack(spacing: 8) {
+                if !model.query.isEmpty {
                     Button {
-                        model.toggleFavoritesOnly()
+                        model.query = ""
                     } label: {
-                        Label("收藏", systemImage: model.favoritesOnly ? "star.fill" : "star")
-                            .font(.system(size: 10, weight: model.favoritesOnly ? .semibold : .regular))
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.tertiary)
                     }
                     .buttonStyle(.plain)
-                    .foregroundStyle(model.favoritesOnly ? Color.orange : Color.secondary)
-                    .padding(.horizontal, 9)
-                    .padding(.vertical, 6)
-                    .background(model.favoritesOnly ? Color.orange.opacity(0.12) : Color.primary.opacity(0.06), in: Capsule())
-                    Text(model.favoriteCount > 0 ? "已收藏 \(model.favoriteCount) 条" : "还没有收藏")
-                        .font(.system(size: 9))
-                        .foregroundStyle(.tertiary)
-                    Spacer()
+                    .help("清除搜索")
+                } else {
+                    Text(model.settings.globalHotKey.displayName)
+                        .font(.system(size: 10, design: .monospaced))
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 9)
+                        .padding(.vertical, 6)
+                        .background(Color.primary.opacity(0.055), in: Capsule())
+                        .help("打开搜索面板的快捷键")
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 10)
             }
+            .padding(.horizontal, 14)
+            .frame(height: 64)
+            .background(Color.primary.opacity(0.035), in: RoundedRectangle(cornerRadius: 19, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 19, style: .continuous).stroke(Color.primary.opacity(0.055)))
+            .padding(.horizontal, 10)
+            .padding(.top, 10)
+            Divider().opacity(0.35).padding(.top, 10)
 
             if model.query.isEmpty && model.browseCategory == nil && !model.favoritesOnly {
                 DiscoveryView(
                     recentSearches: model.settings.recentSearches,
+                    favoriteCount: model.favoriteCount,
                     onRecentSearch: model.selectRecentSearch,
-                    onExample: model.selectRecentSearch,
+                    onFavorites: model.toggleFavoritesOnly,
                     onCategory: model.browse
                 )
             } else {
@@ -752,15 +750,18 @@ struct SearchPanelView: View {
                 }
                 if !model.results.isEmpty {
                     HStack {
-                        Text(model.resultSummary)
-                            .font(.system(size: 9))
-                            .foregroundStyle(.tertiary)
+                        Text("快捷键")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(.secondary)
                         Spacer()
+                        Text(model.resultSummary)
+                            .font(.system(size: 10))
+                            .foregroundStyle(.tertiary)
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, model.requestedApp == nil ? (model.browseCategory == nil ? 10 : 4) : 7)
                 }
-                Divider().opacity(0.55)
+                Divider().opacity(0.35).padding(.top, model.results.isEmpty ? 0 : 8)
                 if model.results.isEmpty {
                     VStack(spacing: 6) {
                         Text(model.catalogError.map { _ in "快捷键数据加载失败" } ?? (model.favoritesOnly ? "还没有收藏的快捷键" : "没有找到匹配的快捷键"))
@@ -839,9 +840,9 @@ struct SearchPanelView: View {
             }
         }
         .frame(width: 560)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 30, style: .continuous).stroke(.primary.opacity(0.12)))
-        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 27, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 27, style: .continuous).stroke(.primary.opacity(0.13)))
+        .clipShape(RoundedRectangle(cornerRadius: 27, style: .continuous))
         .onAppear {
             isSearchFocused = true
             resizePanel()
@@ -877,14 +878,15 @@ struct SearchPanelView: View {
             let resultHeight = resultsViewportHeight
             let extraHeight: CGFloat
             if model.query.isEmpty && model.browseCategory == nil && !model.favoritesOnly {
-                extraHeight = 72 + 178 + 44
+                let homeContentHeight: CGFloat = model.settings.recentSearches.isEmpty ? 199 : 262
+                extraHeight = 84 + homeContentHeight
             } else {
                 let headingHeight: CGFloat = model.favoritesOnly || model.browseCategory != nil ? 30 : 0
                 let sourceHeight: CGFloat = model.browseCategory == nil && !model.results.isEmpty && model.availableSources.count > 1 ? 36 : 0
-                let summaryHeight: CGFloat = model.results.isEmpty ? 0 : 24
+                let summaryHeight: CGFloat = model.results.isEmpty ? 0 : 32
                 let footerHeight: CGFloat = model.results.isEmpty ? 0 : 38
                 let emptyStateHeight: CGFloat = model.results.isEmpty ? 112 : 0
-                extraHeight = 72 + headingHeight + sourceHeight + summaryHeight + footerHeight + emptyStateHeight + resultHeight
+                extraHeight = 84 + headingHeight + sourceHeight + summaryHeight + footerHeight + emptyStateHeight + resultHeight
             }
             panel.resize(to: NSSize(width: 560, height: extraHeight))
         }
@@ -904,20 +906,22 @@ private struct SourceFilterView: View {
     let onSelect: (ShortcutSource?) -> Void
 
     var body: some View {
-        HStack(spacing: 6) {
-            Text("来源")
-                .font(.system(size: 9, weight: .medium))
-                .foregroundStyle(.tertiary)
-            SourceFilterChip(title: "全部", icon: "square.grid.2x2", selected: selectedSource == nil) {
-                onSelect(nil)
-            }
-            ForEach(sources, id: \.self) { source in
-                SourceFilterChip(title: source.displayName, icon: sourceIcon(for: source), selected: selectedSource == source) {
-                    onSelect(source)
+        ScrollView(.horizontal) {
+            HStack(spacing: 6) {
+                Text("来源")
+                    .font(.system(size: 9, weight: .medium))
+                    .foregroundStyle(.tertiary)
+                SourceFilterChip(title: "全部", icon: "square.grid.2x2", selected: selectedSource == nil) {
+                    onSelect(nil)
+                }
+                ForEach(sources, id: \.self) { source in
+                    SourceFilterChip(title: source.displayName, icon: sourceIcon(for: source), selected: selectedSource == source) {
+                        onSelect(source)
+                    }
                 }
             }
-            Spacer(minLength: 0)
         }
+        .scrollIndicators(.hidden)
         .padding(.horizontal, 16)
     }
 
@@ -993,66 +997,77 @@ private struct AppOverviewView: View {
 
 struct DiscoveryView: View {
     let recentSearches: [String]
+    let favoriteCount: Int
     let onRecentSearch: (String) -> Void
-    let onExample: (String) -> Void
+    let onFavorites: () -> Void
     let onCategory: (ShortcutCategory) -> Void
 
-    private let examples = ["截图", "移动文件", "Chrome 新标签页", "Notion 搜索页面"]
-
+    private let examples = ["截图", "移动文件", "Chrome 新标签页"]
     private let columns = [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            if !recentSearches.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("最近搜索")
-                        .font(.system(size: 10, weight: .semibold))
+        VStack(alignment: .leading, spacing: 8) {
+            Button(action: onFavorites) {
+                HStack(spacing: 8) {
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundStyle(.orange)
+                    Text("收藏的快捷键")
+                        .font(.system(size: 10.5, weight: .medium))
+                        .foregroundStyle(.primary.opacity(0.86))
+                    Spacer()
+                    Text(favoriteCount > 0 ? "已收藏 \(favoriteCount) 条" : "常用项目")
+                        .font(.system(size: 9))
                         .foregroundStyle(.secondary)
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 8, weight: .semibold))
+                        .foregroundStyle(.tertiary)
+                }
+                .padding(.horizontal, 10)
+                .frame(height: 30)
+            }
+            .buttonStyle(DiscoveryRecentStyle())
+
+            VStack(alignment: .leading, spacing: 5) {
+                DiscoverySectionHeading(
+                    title: recentSearches.isEmpty ? "试试搜索" : "最近搜索",
+                    icon: recentSearches.isEmpty ? "sparkle.magnifyingglass" : "clock.arrow.circlepath",
+                    tint: recentSearches.isEmpty ? .purple : .secondary
+                )
+                ScrollView(.horizontal) {
                     HStack(spacing: 6) {
-                        ForEach(Array(recentSearches.prefix(3)), id: \.self) { value in
+                        ForEach(Array((recentSearches.isEmpty ? examples : recentSearches).prefix(4)), id: \.self) { value in
                             Button { onRecentSearch(value) } label: {
-                                Label(value, systemImage: "clock")
+                                Label(value, systemImage: recentSearches.isEmpty ? "magnifyingglass" : "clock")
+                                    .font(.system(size: 10, weight: .medium))
                                     .lineLimit(1)
+                                    .padding(.horizontal, 9)
+                                    .frame(height: 28)
                             }
-                            .buttonStyle(DiscoveryChipStyle())
+                            .buttonStyle(DiscoveryRecentStyle())
                         }
                     }
                 }
+                .scrollIndicators(.hidden)
             }
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text("试试搜索")
-                    .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(.secondary)
-                HStack(spacing: 6) {
-                    ForEach(examples, id: \.self) { value in
-                        Button { onExample(value) } label: {
-                            Label(value, systemImage: "sparkle.magnifyingglass")
-                                .lineLimit(1)
-                        }
-                        .buttonStyle(DiscoveryChipStyle())
-                    }
-                }
-            }
-
-            VStack(alignment: .leading, spacing: 6) {
-                Text("浏览分类")
-                    .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 5) {
+                DiscoverySectionHeading(title: "浏览分类", icon: "square.grid.2x2", tint: .accentColor)
                 LazyVGrid(columns: columns, spacing: 8) {
                     ForEach(ShortcutCategory.allCases, id: \.self) { category in
                         Button { onCategory(category) } label: {
-                            HStack(spacing: 7) {
+                            HStack(spacing: 8) {
                                 Image(systemName: category.symbolName)
-                                    .font(.system(size: 13, weight: .medium))
+                                    .font(.system(size: 12, weight: .medium))
                                     .foregroundStyle(category.symbolColor)
-                                    .frame(width: 18, height: 18)
-                                    .background(category.symbolColor.opacity(0.10), in: RoundedRectangle(cornerRadius: 5, style: .continuous))
+                                    .frame(width: 22, height: 22)
+                                    .background(category.symbolColor.opacity(0.10), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
                                 Text(category.rawValue)
+                                    .font(.system(size: 10.5, weight: .medium))
                                     .lineLimit(1)
                                 Spacer(minLength: 4)
                                 Image(systemName: "chevron.right")
-                                    .font(.system(size: 9, weight: .semibold))
+                                    .font(.system(size: 8, weight: .semibold))
                                     .foregroundStyle(.tertiary)
                             }
                         }
@@ -1062,19 +1077,35 @@ struct DiscoveryView: View {
             }
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.vertical, 8)
     }
 }
 
-private struct DiscoveryChipStyle: ButtonStyle {
+private struct DiscoverySectionHeading: View {
+    let title: String
+    let icon: String
+    let tint: Color
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(tint)
+                .frame(width: 22, height: 22)
+                .background(tint.opacity(0.10), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
+            Text(title)
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(.primary.opacity(0.84))
+        }
+    }
+}
+
+private struct DiscoveryRecentStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 10))
-            .foregroundStyle(.primary.opacity(0.78))
-            .padding(.horizontal, 8)
-            .padding(.vertical, 6)
-            .background(Color.primary.opacity(configuration.isPressed ? 0.16 : 0.07), in: Capsule())
-            .opacity(configuration.isPressed ? 0.72 : 1)
+            .foregroundStyle(.primary.opacity(0.82))
+            .background(Color.primary.opacity(configuration.isPressed ? 0.075 : 0.035), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 }
 
@@ -1084,10 +1115,10 @@ private struct DiscoveryCategoryStyle: ButtonStyle {
             .font(.system(size: 11, weight: .medium))
             .foregroundStyle(.primary)
             .padding(.horizontal, 10)
-            .padding(.vertical, 8)
-            .background(Color.primary.opacity(configuration.isPressed ? 0.16 : 0.07), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.primary.opacity(0.06)))
-            .opacity(configuration.isPressed ? 0.72 : 1)
+            .padding(.vertical, 6)
+            .frame(maxWidth: .infinity, minHeight: 34)
+            .background(Color.primary.opacity(configuration.isPressed ? 0.075 : 0.035), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.primary.opacity(0.05)))
     }
 }
 
@@ -1184,9 +1215,10 @@ struct ShortcutRow: View {
     var body: some View {
         HStack(spacing: 11) {
             Image(systemName: shortcut.rowSymbolName)
-                .frame(width: 31, height: 31)
+                .font(.system(size: 13, weight: .medium))
+                .frame(width: 34, height: 34)
                 .foregroundStyle(shortcut.rowSymbolColor)
-                .background(.quaternary.opacity(0.75), in: RoundedRectangle(cornerRadius: 8))
+                .background(shortcut.rowSymbolColor.opacity(0.10), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(shortcut.title)
@@ -1230,7 +1262,7 @@ struct ShortcutRow: View {
         }
         .padding(.horizontal, 11)
         .padding(.vertical, 8)
-        .background(selected ? Color.accentColor.opacity(0.10) : .clear, in: RoundedRectangle(cornerRadius: 9))
+        .background(selected ? Color.accentColor.opacity(0.10) : .clear, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         .contentShape(Rectangle())
         .onTapGesture {
             if shortcut.steps?.isEmpty == false {

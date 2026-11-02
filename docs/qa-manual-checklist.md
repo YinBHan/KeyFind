@@ -5,6 +5,10 @@
 - [ ] Toggle `开机启动`, relaunch, and confirm the setting remains enabled or disabled.
 - [ ] If the global shortcut is unavailable, confirm launch shows a clear registration warning instead of failing silently.
 - [ ] Press `⌘⇧ Space` and confirm the compact floating search panel opens with the field focused.
+- [ ] Confirm the search field reads as a distinct rounded control, with the invocation shortcut shown before typing and a clear button while a query is present.
+- [ ] On the empty-query home screen, confirm favorites remain a compact entry, recent searches or suggested queries share one row, and all shortcut categories fit in a balanced two-column grid.
+- [ ] Search for an app-specific shortcut and confirm source filters can scroll horizontally without clipping or resizing the panel unexpectedly.
+- [ ] Confirm shortcut rows use clear app/category accents and the selected row remains easy to identify in light and dark appearances.
 - [ ] Type `截图`; confirm `⌘ ⇧ 3`, `⌘ ⇧ 4`, and `⌘ ⇧ 5` are suggested.
 - [ ] Type `截屏`; confirm it produces the same screenshot suggestions.
 - [ ] Type `切换窗口`; confirm the application/window switching result appears.
