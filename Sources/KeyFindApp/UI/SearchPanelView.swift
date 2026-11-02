@@ -24,6 +24,9 @@ struct SearchPanelView: View {
                     .textFieldStyle(.plain)
                     .font(.system(size: UIConstants.Typography.searchFieldSize, weight: .regular))
                     .focused($isSearchFocused)
+                    .accessibilityLabel("搜索快捷键")
+                    .accessibilityValue(model.query.isEmpty ? "未输入" : model.query)
+                    .accessibilityHint("输入关键词搜索，例如截图或复制")
                     .onSubmit { if let shortcut = model.selectedShortcut() { model.copy(shortcut) } }
                 if let preferredAppInfo = model.preferredAppInfo {
                     Label(preferredAppInfo.displayName, systemImage: "scope")
@@ -45,6 +48,8 @@ struct SearchPanelView: View {
                     }
                     .buttonStyle(.plain)
                     .help("清除搜索")
+                    .accessibilityLabel("清除搜索")
+                    .accessibilityHint("清空当前搜索内容")
                 } else {
                     Text(model.settings.globalHotKey.displayName)
                         .font(.system(size: 10, design: .monospaced))
@@ -95,6 +100,7 @@ struct SearchPanelView: View {
                         .buttonStyle(.plain)
                         .foregroundStyle(.secondary)
                         .help("返回")
+                        .accessibilityLabel("返回结果列表")
                         categoryTitle(category)
                         Spacer()
                         Text("共 \(model.totalResultCount) 条")
@@ -186,6 +192,7 @@ struct SearchPanelView: View {
                                         .frame(maxWidth: .infinity)
                                 }
                                 .buttonStyle(MoreResultsButtonStyle())
+                                .accessibilityHint("继续显示剩余的快捷键")
                                 .padding(.top, 4)
                             }
                         }

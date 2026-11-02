@@ -99,9 +99,17 @@ struct ShortcutRow: View {
                 }
             }
             Button(action: onFavorite) { Image(systemName: favorite ? "star.fill" : "star").font(.system(size: 12)) }
-                .buttonStyle(.plain).foregroundStyle(favorite ? .orange : .secondary).help("收藏").opacity(selected ? 1 : 0.4)
+                .buttonStyle(.plain)
+                .foregroundStyle(favorite ? .orange : .secondary)
+                .help("收藏")
+                .accessibilityLabel(favorite ? "取消收藏" : "收藏")
+                .accessibilityHint(favorite ? "从收藏中移除这个快捷键" : "收藏这个快捷键")
+                .opacity(selected ? 1 : 0.4)
             Button(action: onCopySymbol) { Image(systemName: "command").font(.system(size: 12)) }
-                .buttonStyle(.plain).foregroundStyle(.secondary).help("复制符号形式")
+                .buttonStyle(.plain)
+                .foregroundStyle(.secondary)
+                .help("复制符号形式")
+                .accessibilityLabel("复制符号形式")
             Button(action: onCopy) {
                 Image(systemName: copied ? "checkmark" : "doc.on.clipboard")
                     .font(.system(size: 12))
@@ -111,11 +119,17 @@ struct ShortcutRow: View {
             }
             .buttonStyle(.plain)
             .help("复制可读文本")
+            .accessibilityLabel(copied ? "已复制快捷键" : "复制可读快捷键")
+            .accessibilityHint("将可读格式的快捷键复制到剪贴板")
         }
         .padding(.horizontal, 11)
         .padding(.vertical, 8)
         .background(selected ? Color.accentColor.opacity(0.10) : .clear, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         .contentShape(Rectangle())
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("\(shortcut.title)，\(shortcut.keys.readableText)")
+        .accessibilityHint(shortcut.steps?.isEmpty == false ? "双击展开操作步骤，使用右侧按钮复制快捷键" : "双击复制快捷键")
+        .accessibilityAddTraits(.isButton)
         .onTapGesture {
             if shortcut.steps?.isEmpty == false {
                 onToggleExpanded()
