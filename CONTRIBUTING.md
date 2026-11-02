@@ -16,6 +16,34 @@ The current source list and last verification dates are tracked in
 memory alone: link the official documentation and mark configurable defaults in
 the record's `caution` field.
 
+### Field guidelines
+
+- **`id`**: Use a unique, stable identifier such as `copy` or `chrome-new-tab`. Do not change it after release.
+- **`title`**: Keep the action name short and readable, for example `复制` or `打开新标签页`.
+- **`description`**: Explain the result of the shortcut in one concise sentence.
+- **`searchTerms`**: Include useful Chinese and English names, synonyms, and phrases people may search for.
+- **`steps`** (optional): Use an ordered list when a shortcut needs a multi-stage workflow, a prerequisite, or extra context. Keep each item short.
+
+  ```json
+  "steps": [
+    "选中要移动的文件",
+    "按 ⌘X 剪切",
+    "进入目标文件夹",
+    "按 ⌥⌘V 移动到这里"
+  ]
+  ```
+
+- **`caution`** (optional): Explain a configurable default, a condition the user must meet, or a meaningful side effect. The app highlights this text in the shortcut row, so keep it specific and concise.
+
+  ```json
+  "caution": "此快捷键可在应用设置中自定义。"
+  ```
+
+Use `caution` for destructive actions, system-level actions, configurable shortcuts,
+or behavior that depends on the current app or selection. Use `steps` when the
+user benefits from seeing a sequence. A record may include both fields when it
+needs a warning as well as instructions.
+
 ## Local verification
 
 ```bash
