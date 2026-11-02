@@ -133,14 +133,26 @@ struct SearchPanelView: View {
                 }
                 Divider().opacity(0.35).padding(.top, model.results.isEmpty ? 0 : 8)
                 if model.results.isEmpty {
-                    VStack(spacing: 6) {
-                        Text(model.catalogError.map { _ in "快捷键数据加载失败" } ?? (model.favoritesOnly ? "还没有收藏的快捷键" : "没有找到匹配的快捷键"))
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundStyle(.secondary)
-                        if model.catalogError == nil && !model.favoritesOnly && !model.query.isEmpty {
-                            Text("试试“截图”“移动文件”或“Chrome 新标签页”")
+                    VStack(spacing: 9) {
+                        Image(systemName: model.emptyStateIcon)
+                            .font(.system(size: 32, weight: .regular))
+                            .foregroundStyle(model.catalogError == nil ? Color.secondary.opacity(0.45) : Color.orange)
+                            .accessibilityHidden(true)
+                        Text(model.emptyStateTitle)
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(.primary)
+                        Text(model.emptyStateMessage)
+                            .font(.system(size: 11))
+                            .foregroundStyle(model.catalogError == nil ? Color.secondary : Color.orange)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: 400)
+                        if let suggestion = model.emptyStateSuggestion {
+                            Text(suggestion)
                                 .font(.system(size: 10))
                                 .foregroundStyle(.tertiary)
+                        }
+                        if model.catalogError == nil && !model.favoritesOnly && !model.query.isEmpty {
                             HStack(spacing: 8) {
                                 Button("提交缺失快捷键") { model.openIssueReport() }
                                     .buttonStyle(.plain)
@@ -149,12 +161,6 @@ struct SearchPanelView: View {
                                 Link("查看贡献指南", destination: URL(string: "https://github.com/YinBHan/KeyFind/blob/main/CONTRIBUTING.md")!)
                                     .font(.system(size: 10))
                             }
-                        }
-                        if let catalogError = model.catalogError {
-                            Text(catalogError)
-                                .font(.system(size: 10))
-                                .foregroundStyle(.orange)
-                                .multilineTextAlignment(.center)
                         }
                         if let info = model.requestedAppInfo {
                             Text("\(info.displayName) · \(model.requestedAppCount) 个快捷键")
@@ -165,7 +171,8 @@ struct SearchPanelView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 24)
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 20)
                 } else {
                     ScrollView(.vertical) {
                         VStack(spacing: 2) {
@@ -262,7 +269,7 @@ struct SearchPanelView: View {
                 let sourceHeight: CGFloat = model.browseCategory == nil && !model.results.isEmpty && model.availableSources.count > 1 ? 36 : 0
                 let summaryHeight: CGFloat = model.results.isEmpty ? 0 : 32
                 let footerHeight: CGFloat = model.results.isEmpty ? 0 : 38
-                let emptyStateHeight: CGFloat = model.results.isEmpty ? 112 : 0
+                let emptyStateHeight: CGFloat = model.results.isEmpty ? 188 : 0
                 extraHeight = UIConstants.Panel.contentChromeHeight + headingHeight + sourceHeight + summaryHeight + footerHeight + emptyStateHeight + resultHeight
             }
             panel.resize(to: NSSize(width: UIConstants.Panel.width, height: extraHeight))

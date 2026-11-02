@@ -102,6 +102,30 @@ final class SearchPanelViewModel: ObservableObject {
 
     var favoriteCount: Int { settings.favoriteIDs.count }
 
+    var emptyStateIcon: String {
+        if catalogError != nil { return "exclamationmark.triangle" }
+        if favoritesOnly { return "star.slash" }
+        return "magnifyingglass"
+    }
+
+    var emptyStateTitle: String {
+        if catalogError != nil { return "快捷键数据加载失败" }
+        if favoritesOnly { return "还没有收藏" }
+        return "没有找到匹配的快捷键"
+    }
+
+    var emptyStateMessage: String {
+        if let catalogError { return catalogError }
+        if favoritesOnly { return "点击快捷键旁边的星标，就能在这里快速找到它。" }
+        if !query.isEmpty { return "换个关键词试试，或按应用名加操作搜索。" }
+        return "试试搜索常用操作，或从最近搜索和分类中开始浏览。"
+    }
+
+    var emptyStateSuggestion: String? {
+        guard !query.isEmpty, !favoritesOnly, catalogError == nil else { return nil }
+        return "例如“截图”、“复制”或“Chrome 打开新标签页”"
+    }
+
     func reset() {
         preferredApp = NSWorkspace.shared.frontmostApplication?.bundleIdentifier
             .flatMap { identifier in sourceRegistry.descriptors.first { $0.bundleIdentifier == identifier }?.app }
