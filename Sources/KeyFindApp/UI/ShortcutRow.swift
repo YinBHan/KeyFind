@@ -51,10 +51,11 @@ struct ShortcutRow: View {
     let selected: Bool
     let favorite: Bool
     let copied: Bool
+    let expanded: Bool
     let onCopy: () -> Void
     let onCopySymbol: () -> Void
     let onFavorite: () -> Void
-    @State private var expanded = false
+    let onToggleExpanded: () -> Void
 
     var body: some View {
         HStack(spacing: 11) {
@@ -117,7 +118,7 @@ struct ShortcutRow: View {
         .contentShape(Rectangle())
         .onTapGesture {
             if shortcut.steps?.isEmpty == false {
-                expanded.toggle()
+                onToggleExpanded()
             } else {
                 onCopy()
             }

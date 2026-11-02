@@ -169,9 +169,11 @@ struct SearchPanelView: View {
                                     selected: index == model.selectedIndex,
                                     favorite: model.settings.favoriteIDs.contains(shortcut.id),
                                     copied: model.copiedShortcutID == shortcut.id,
+                                    expanded: model.expandedShortcutIDs.contains(shortcut.id),
                                     onCopy: { model.copy(shortcut) },
                                     onCopySymbol: { model.copy(shortcut, format: .symbol) },
-                                    onFavorite: { model.toggleFavorite(shortcut) }
+                                    onFavorite: { model.toggleFavorite(shortcut) },
+                                    onToggleExpanded: { model.toggleExpanded(shortcut) }
                                 )
                                     .onHover { if $0 { model.selectedIndex = index } }
                             }
@@ -190,7 +192,7 @@ struct SearchPanelView: View {
                         .padding(.horizontal, 8)
                         .padding(.vertical, 8)
                     }
-                    .frame(height: resultsViewportHeight)
+                    .frame(maxHeight: UIConstants.Panel.maxResultsHeight)
                     Divider().opacity(0.55)
                     HStack {
                         Text("↑ ↓ 选择   ↵ 复制   esc 关闭")
@@ -227,6 +229,9 @@ struct SearchPanelView: View {
         .onChange(of: model.displayedLimit) { _ in
             resizePanel()
         }
+        .onChange(of: model.expandedShortcutIDs) { _ in
+            resizePanel()
+        }
         .onExitCommand(perform: close)
         .onMoveCommand { model.moveSelection($0) }
     }
@@ -258,10 +263,14 @@ struct SearchPanelView: View {
     }
 
     private var resultsViewportHeight: CGFloat {
-        let rowHeight: CGFloat = 58
+        let rowsHeight = model.results.reduce(CGFloat.zero) { total, shortcut in
+            let stepCount = model.expandedShortcutIDs.contains(shortcut.id) ? shortcut.steps?.count ?? 0 : 0
+            let expandedContentHeight = stepCount > 0 ? 8 + CGFloat(stepCount) * 18 : 0
+            return total + 58 + expandedContentHeight
+        }
         let listPadding = UIConstants.Panel.listPadding
         let moreButtonHeight = model.canShowMore ? UIConstants.Panel.moreButtonHeight : 0
-        return min(UIConstants.Panel.maxResultsHeight, CGFloat(model.results.count) * rowHeight + moreButtonHeight + listPadding)
+        return min(UIConstants.Panel.maxResultsHeight, rowsHeight + moreButtonHeight + listPadding)
     }
 
     private func categoryTitle(_ category: ShortcutCategory) -> some View {

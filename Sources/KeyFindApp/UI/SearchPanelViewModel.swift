@@ -38,6 +38,7 @@ final class SearchPanelViewModel: ObservableObject {
     @Published var selectedSource: ShortcutSource?
     @Published var favoritesOnly = false
     @Published var copiedShortcutID: String?
+    @Published private(set) var expandedShortcutIDs: Set<String> = []
 
     let settings: AppSettings
     private let catalog: ShortcutCatalog
@@ -113,6 +114,7 @@ final class SearchPanelViewModel: ObservableObject {
         selectedIndex = 0
         favoritesOnly = false
         copiedShortcutID = nil
+        expandedShortcutIDs = []
     }
 
     func selectRecentSearch(_ value: String) {
@@ -161,6 +163,16 @@ final class SearchPanelViewModel: ObservableObject {
         guard canShowMore else { return }
         displayedLimit += pageSize
         updateResults()
+    }
+
+    func toggleExpanded(_ shortcut: Shortcut) {
+        withAnimation(.easeInOut(duration: 0.18)) {
+            if expandedShortcutIDs.contains(shortcut.id) {
+                expandedShortcutIDs.remove(shortcut.id)
+            } else {
+                expandedShortcutIDs.insert(shortcut.id)
+            }
+        }
     }
 
     func moveSelection(_ direction: MoveCommandDirection) {
@@ -214,4 +226,3 @@ final class SearchPanelViewModel: ObservableObject {
         }
     }
 }
-
