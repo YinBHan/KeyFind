@@ -114,6 +114,21 @@ public struct ShortcutSearchService: Sendable {
         rankedMatches(for: query, preferredApp: preferredApp, source: nil)
     }
 
+    /// Searches the catalog and ranks matches by relevance.
+    ///
+    /// Scores are additive: exact title matches receive 100 points and title
+    /// containment receives 75; pinyin title matches receive 88 or 62. Search
+    /// term matches receive 50 or 35 (44 or 29 for pinyin), while description
+    /// matches receive 20 (17 or 14 for pinyin). A requested app prefix adds
+    /// 80 points to that app and excludes other app-specific shortcuts; the
+    /// frontmost preferred app adds 12. A small catalog-index penalty keeps
+    /// otherwise equal results in their original order.
+    ///
+    /// - Parameters:
+    ///   - query: The user's query, optionally beginning with an app alias.
+    ///   - preferredApp: The frontmost app whose shortcuts should rank higher.
+    ///   - source: An optional source filter applied before scoring.
+    /// - Returns: Matching shortcuts paired with their scores, highest first.
     private func rankedMatches(for query: String, preferredApp: ShortcutApp?, source: ShortcutSource?) -> [(Shortcut, Double)] {
         let (normalizedQuery, requestedApp, isAppOnlyQuery) = resolveAppPrefix(in: query)
         let targetApp = requestedApp ?? preferredApp
